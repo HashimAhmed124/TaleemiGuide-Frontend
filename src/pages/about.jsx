@@ -155,13 +155,22 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-[#0B1C3C]/80"></div>
         <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-20">
-          <h1 className="text-white text-4xl md:text-6xl font-bold">
-            About Us
+          <h1 className="text-white text-2xl md:text-4xl font-bold">
+            A Modern Guidance Platform for the Students of Pakistan
           </h1>
 
           <span
             className="bg-white h-1 rounded mt-0 inline-block transition-all duration-700"
-            style={{ width: loaded ? "280px" : "0px" }}
+            style={{ width: loaded ? "985px" : "0px" }}
+          />
+
+          <h2 className="text-white text-xl md:text-2xl font-bold mt-8">
+            Smart, Reliable, and Personalized Academic & Career Guidance
+          </h2>
+
+          <span
+            className="bg-white h-1 rounded mt-0 inline-block transition-all duration-700"
+            style={{ width: loaded ? "730px" : "0px" }}
           />
 
           <motion.p
@@ -174,20 +183,22 @@ export default function AboutPage() {
             <h2 className="text-xl sm:text-xl lg:text-2xl font-bold leading-tight mb-1">
               Who We Are
             </h2>
-            Today’s education world is completely different from before. There
-            are countless colleges, hundreds of degree options, and careers that
-            change every year because of technology and AI. Most students feel
-            confused — and the old style of guidance is no longer enough.
-            <br />
-            <br />
-            <h2 className="text-xl sm:text-xl lg:text-xl font-bold leading-tight mb-1">
-              This is exactly why TaleemiGuide exists.
-            </h2>
-            We offer a smart, modern platform that gives students clear,
-            personalized, and trusted academic guidance. Whether you’re in Class
-            10, choosing intermediate subjects, selecting a university degree,
-            or planning your career growth, TaleemiGuide helps you make the
-            right decisions with confidence.
+            <p className="text-justify">
+              Today’s education world is completely different from before. There
+              are countless colleges, hundreds of degree options, and careers
+              that change every year because of technology and AI. Most students
+              feel confused — and the old style of guidance is no longer enough.
+              <br />
+              <br />
+              <h2 className="text-xl sm:text-xl lg:text-xl font-bold leading-tight mb-1">
+                This is exactly why TaleemiGuide exists.
+              </h2>
+              We offer a smart, modern platform that gives students clear,
+              personalized, and trusted academic guidance. Whether you’re in
+              Class 10, choosing intermediate subjects, selecting a university
+              degree, or planning your career growth, TaleemiGuide helps you
+              make the right decisions with confidence.
+            </p>
           </motion.p>
         </div>
       </div>
@@ -224,9 +235,9 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold mb-6 flex-col"
+            className="text-2xl md:text-3xl font-bold mb-6 flex-col"
           >
-            Our Mission
+            Our Foundation & Team
           </motion.h2>
 
           <motion.p
@@ -235,10 +246,17 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg max-w-3xl leading-relaxed"
           >
-            TaleemiGuide is dedicated to helping students discover their true
-            potential. We connect students with expert counselors, provide
-            accurate career insights, and empower them to make informed
-            decisions about their academic journey.
+            Our knowledge base is built on years of experience and expertise
+            contributed by a powerful team of:
+            <ul className="mt-3 mb-3 space-y-1">
+            <li> • Educationists and Senior Academicians</li> 
+            <li> • Industry Specialists and Market Analysts</li>  
+            <li> • Psychologists and Certified Counsellors</li>  
+            </ul> 
+
+            Together, we help learners
+            make informed, confident academic and career decisions at every
+            stage of educational career.
           </motion.p>
 
           <img
@@ -288,7 +306,7 @@ export default function AboutPage() {
               ))}
             </div>
 
-            <motion.h2
+            {/* <motion.h2
               key={current.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -296,14 +314,14 @@ export default function AboutPage() {
               className="text-3xl md:text-4xl font-bold mt-6 mb-4 text-[#0B1C3C]"
             >
               {current.title}
-            </motion.h2>
+            </motion.h2> */}
 
             <motion.p
               key={current.desc}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-lg leading-relaxed text-[#14223C]"
+              className="text-lg leading-relaxed text-[#14223C] mt-6 mb-4"
             >
               {current.desc}
               <img
@@ -334,13 +352,10 @@ export default function AboutPage() {
             <play size={55} color="white" />
             <FaPlay className=" w-50 h-16 ml-4 text-white/300" />
           </button>
-          <h2 className=" font-bold text-4xl md:text-5xl text-[#0B1C3C] mb-4">
-            Watch Our Introduction Video
+          <h2 className=" font-bold text-2xl md:text-3xl text-[#0B1C3C] mb-4">
+            Watch the Video to Know about our Work.
           </h2>
-          <p className="text-lg text-[#0B1C3C] md:text-xl max-w-2xl mx-auto">
-            Introduction to TaleemiGuide and our mission to help students
-            succeed.
-          </p>
+          
         </div>
         {showVideo && (
           <div className="fixed inset-0 bg-black/80 flex items-center justify-center justify-center z-20">

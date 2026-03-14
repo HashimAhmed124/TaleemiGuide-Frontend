@@ -34,21 +34,21 @@ const HeroSection = ({ onOpenRoadmap }) => (
     </div>
 
     {/* Content */}
-    <div className="max-w-5xl mx-auto px-6 py-8 text-center">
+    <div className="max-w-5xl mx-auto px-6 py-6 text-center">
 
       <span className="inline-block mb-4 px-4 py-1 
           text-sm font-semibold 
           tracking-wide text-orange-600 bg-orange-100
            rounded-full text-start">
-        Know Yourself Before Choosing a Degree.
+        Know Yourself Before Choosing a Degree or Career.
       </span>
 
-      <h1 className="text-5xl md:text-5xl font-extrabold 
+      <h1 className="text-4xl md:text-4xl font-extrabold 
           leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
         Discover the Career That Truly Fits You
       </h1>
 
-      <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
+      <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-10">
         In today’s world of thousands of colleges, hundreds of universities and thousands of programs, along with rapidly emerging fields, choosing the right specialization is one of the hardest decisions students and parents face. <br />
         <span className="font-bold">The good news? TaleemiGuide has made it easier, clearer, and scientific.</span> <br />
         Our Career Assessment Test is based on internationally recognized models, validated methodologies, and years of experience in psychology, counseling, and academic advising. The test helps you understand who you are, what career paths match your personality, interests, values, and strengths, and which academic direction fits your future. <br />
@@ -82,7 +82,7 @@ const WhyTakeSection = () => (
           style={{ backgroundColor: COLORS.secondary }}
         />
         <p
-          className="text-sm sm:text-base max-w-3xl"
+          className="text-sm sm:text-base max-w-4xl"
           style={{ color: COLORS.textGray }}
         >
           A scientifically designed assessment that helps you make confident,

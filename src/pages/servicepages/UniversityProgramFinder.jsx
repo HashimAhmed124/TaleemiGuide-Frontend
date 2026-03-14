@@ -60,14 +60,14 @@ const HeroSection = ({ onOpenRoadmap }) => {
         </span>
 
         <h1
-          className="text-5xl md:text-5xl font-extrabold 
+          className="text-4xl md:text-4xl font-extrabold 
         leading-tight mb-6"
           style={{ color: COLORS.primaryDark }}
         >
           University Program Finder
         </h1>
 
-        <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-10">
           Welcome to Pakistan’s first comprehensive University Program Finder,
           powered by TaleemiGuide. Now, you can explore every BS, MS/MPhil, and
           PhD program offered across all universities — verified, updated,
@@ -538,7 +538,7 @@ export default function UniversityProgramFinder() {
       <HeroSection />
       <WhyThisMattersSection />
       <WhatYouCanDoSection />
-      <IntegrationSection />
+      {/* <IntegrationSection /> */}
       <NextStepSection />
     </ServiceLayout>
   );

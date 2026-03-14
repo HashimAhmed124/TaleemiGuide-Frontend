@@ -34,9 +34,9 @@ const serviceData = [
   },
   {
     id: "service-4",
-    title: "Subject Classification",
+    title: "Subject Classification ( 1000+ Subjects Classified )",
     path: "/service/subject-classification",
-    subtitle: "Understand Where Your Field Falls — Clearly and Accurately.",
+    subtitle: "Understand Hierarchy of the Fileds — Clearly and Accurately.",
   },
   {
     id: "service-5",
@@ -50,7 +50,7 @@ const serviceData = [
     title: "University Graduates Guidance",
     path: "/service/university-graduates-guidance",
     subtitle:
-      "Your Partner for Every Academic Challenge — From Admission to Graduation.",
+      "Your Partner for Every Academic Challenge.",
   },
   {
     id: "service-7",

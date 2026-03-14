@@ -4,16 +4,16 @@ import ProcessImg from "../../assets/bg-images/sample2.png";
 
 export default function TheProcess() {
   const steps = [
-    { number: 1, title: "Login", desc: "Access your personalized dashboard." },
+    { number: 1, title: "Login", desc: "Access your personalized TaleemiGuide dashboard." },
     {
       number: 2,
-      title: "Submit Query",
-      desc: "Share your academic challenge with documents if needed.",
+      title: "Request Guidance",
+      desc: "Select the service you need and share your academic question or documents.",
     },
     {
       number: 3,
-      title: "Get Solutions",
-      desc: "Receive clear, actionable expert guidance immediately.",
+      title: "Get Expert Solutions",
+      desc: "Receive clear, reliable, and actionable guidance from TaleemiGuide experts.",
     },
   ];
 
@@ -80,8 +80,8 @@ export default function TheProcess() {
             Quality Guidance Made Simple
           </h2>
           <p className="text-[#4B5563] text-lg md:text-xl max-w-lg">
-            Getting the right advice has never been easier — just follow 3
-            simple steps and start your journey with TaleemiGuide.
+            Getting the right advice has never been easier — 
+            just follow three simple steps and start your journey with TaleemiGuide.
           </p>
 
           <div className="relative mt-8 space-y-6 md:space-y-8">

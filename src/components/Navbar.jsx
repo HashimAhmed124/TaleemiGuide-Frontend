@@ -44,8 +44,8 @@ export default function Navbar({
   const baseLinks = useMemo(
     () => [
       { name: "Home", path: "/" },
+      { name: "About Us", path: "/about-us" },
       { name: "Services", path: "/service" },
-      { name: "About", path: "/about-us" },
     ],
     []
   );

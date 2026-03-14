@@ -40,21 +40,21 @@ const HeroSection = ({ onOpenRoadmap }) => {
       </div>
 
       {/* Content */}
-      <div className="max-w-5xl mx-auto px-6 py-8 text-center">
+      <div className="max-w-5xl mx-auto px-6 py-6 text-center">
 
         <span className="inline-block mb-4 px-4 py-1 
         text-sm font-semibold 
         tracking-wide text-orange-600 bg-orange-100
          rounded-full text-start">
-          Search. Compare. Decide — Every BS, MS & PhD Program in One Place.
+          Your Partner for Every Academic Challenge
         </span>
 
-        <h1 className="text-5xl md:text-5xl font-extrabold 
+        <h1 className="text-4xl md:text-4xl font-extrabold 
         leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
-          University Program Finder
+          University Graduate Guidance
         </h1>
 
-        <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-2">
           The journey through college and university is transformative —
           filled with opportunities, responsibilities, and challenges.
           Whether you are pursuing an Associate Degree, BS, MS/MPhil, or PhD,
@@ -97,19 +97,18 @@ const CommonChallengesSection = () => (
       {/* Heading */}
       <div className="mb-8">
         <h2
-          className="text-2xl sm:text-3xl font-extrabold"
+          className="text-2xl sm:text-2xl font-extrabold"
           style={{ color: COLORS.primaryDark }}
         >
-          Common Challenges Faced by University Students in Pakistan
-        </h2>
-        <div
-          className="w-231 h-1 rounded-full mb-6"
-          style={{ backgroundColor: COLORS.secondary }}
-        />
-        <p className="text-sm sm:text-base text-gray-600 max-w-3xl">
           From academic decisions to research hurdles, students often face
           complex policies and unclear pathways.
-        </p>
+        </h2>
+        <div
+          className="w-249 h-1 rounded-full mb-6"
+          style={{ backgroundColor: COLORS.secondary }}
+        /> 
+        {/* underline div */}
+        
       </div>
 
       {/* Main Card */}
@@ -237,11 +236,11 @@ const HowSupportsSection = () => (
           How TaleemiGuide Supports
         </h2>
         <div
-          className="w-106 h-1 rounded-full mb-6"
+          className="w-117 h-1 rounded-full mb-6"
           style={{ backgroundColor: COLORS.secondary }}
         />
         <p
-          className="text-sm sm:text-base leading-relaxed max-w-3xl"
+          className="text-sm sm:text-base leading-relaxed max-w-5xl"
           style={{ color: COLORS.textGray }}
         >
           Our approach is comprehensive and student-centered, focusing not only
@@ -600,7 +599,7 @@ const NextStepSection = () => (
           >
             As students graduate and enter the professional world, new
             challenges emerge — and TaleemiGuide continues helping through our
-            next service: Working Professionals.
+            next service: for working professionals.
           </p>
 
           
@@ -637,8 +636,8 @@ export default function UniversityGraduatesGuidance() {
       <HeroSection />
       <CommonChallengesSection />
       <HowSupportsSection />
-      <ExpertTeamSection />
-      <TaleemiAdviceFormSection sectionRef={adviceSectionRef} />
+      {/* <ExpertTeamSection /> */}
+      {/* <TaleemiAdviceFormSection sectionRef={adviceSectionRef} /> */}
       <OnlineSessionSection />
       <NextStepSection />
     </ServiceLayout>

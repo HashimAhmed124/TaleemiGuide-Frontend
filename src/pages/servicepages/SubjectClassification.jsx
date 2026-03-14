@@ -39,18 +39,18 @@ const HeroSection = ({ onOpenRoadmap }) => {
         tracking-wide text-orange-600 bg-orange-100
          rounded-full text-start"
         >
-          Understand Where Your Field Falls — Clearly and Accurately.
+          Understand Hierarchy of the Fileds — Clearly and Accurately.
         </span>
 
         <h1
-          className="text-5xl md:text-5xl font-extrabold 
+          className="text-4xl md:text-4xl font-extrabold 
         leading-tight mb-6"
           style={{ color: COLORS.primaryDark }}
         >
           Choosing The Right Field For Your Subject
         </h1>
 
-        <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-10">
           Choosing the right academic field or career is difficult when students
           know only a handful of traditional subjects — while in actual 1000+
           subjects exist across dozens of disciplines, which leads to different
@@ -324,16 +324,7 @@ const TwoInstrumentsSection = () => {
             </p>
           </div>
 
-          <button
-            type="button"
-            className="rounded-full px-6 py-3 text-sm font-semibold transition-transform duration-200 hover:scale-105"
-            style={{
-              backgroundColor: COLORS.primary,
-              color: "#fff",
-            }}
-          >
-            Explore Now
-          </button>
+          
         </div>
       </div>
     </section>

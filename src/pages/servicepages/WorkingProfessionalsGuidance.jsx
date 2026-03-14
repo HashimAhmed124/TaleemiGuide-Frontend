@@ -50,7 +50,7 @@ const HeroSection = ({ onOpenRoadmap }) => {
           Align Your Education, Skills & Career Goals.
         </span>
 
-        <h1 className="text-5xl md:text-5xl font-extrabold 
+        <h1 className="text-4xl md:text-4xl font-extrabold 
         leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
           Working Professionals Guidance
         </h1>
@@ -101,10 +101,10 @@ const HowSupportsSection = () => (
           How TaleemiGuide Supports Working Professionals
         </h2>
         <div
-          className="w-192 h-1 rounded-full mb-6"
+          className="w-210 h-1 rounded-full mb-6"
           style={{ backgroundColor: COLORS.secondary }}
         />
-        <p className="text-sm sm:text-base text-gray-600 max-w-3xl">
+        <p className="text-sm sm:text-base text-gray-600 max-w-4xl">
           Practical guidance designed for professionals navigating career
           growth, transitions, and higher education decisions.
         </p>
@@ -461,8 +461,8 @@ export default function WorkingProfessionalsGuidance() {
       <HowSupportsSection />
       <OurApproachSection />
       <WhoCanBenefitSection />
-      <TaleemiAdviceFormSection sectionRef={adviceSectionRef} />
-      <NextStepSection />
+      {/* <TaleemiAdviceFormSection sectionRef={adviceSectionRef} /> */}
+      {/* <NextStepSection /> */}
     </ServiceLayout>
   );
 }
