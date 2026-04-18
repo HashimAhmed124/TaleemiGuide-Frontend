@@ -46,6 +46,8 @@ export default function Navbar({
       { name: "Home", path: "/" },
       { name: "About Us", path: "/about-us" },
       { name: "Services", path: "/service" },
+      { name: "For Organizations", path: "/corporate" },
+      //{ name: "Spreadsheet", path: "/spreadsheet" },
     ],
     []
   );

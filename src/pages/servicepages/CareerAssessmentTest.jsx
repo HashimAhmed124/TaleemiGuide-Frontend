@@ -34,21 +34,21 @@ const HeroSection = ({ onOpenRoadmap }) => (
     </div>
 
     {/* Content */}
-    <div className="max-w-5xl mx-auto px-6 py-6 text-center">
+    <div className="max-w-5xl mx-auto px-6 py-8 text-center">
 
       <span className="inline-block mb-4 px-4 py-1 
           text-sm font-semibold 
           tracking-wide text-orange-600 bg-orange-100
            rounded-full text-start">
-        Know Yourself Before Choosing a Degree or Career.
+        Know Yourself Before Choosing a Degree.
       </span>
 
-      <h1 className="text-4xl md:text-4xl font-extrabold 
+      <h1 className="text-5xl md:text-5xl font-extrabold 
           leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
         Discover the Career That Truly Fits You
       </h1>
 
-      <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-10">
+      <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
         In today’s world of thousands of colleges, hundreds of universities and thousands of programs, along with rapidly emerging fields, choosing the right specialization is one of the hardest decisions students and parents face. <br />
         <span className="font-bold">The good news? TaleemiGuide has made it easier, clearer, and scientific.</span> <br />
         Our Career Assessment Test is based on internationally recognized models, validated methodologies, and years of experience in psychology, counseling, and academic advising. The test helps you understand who you are, what career paths match your personality, interests, values, and strengths, and which academic direction fits your future. <br />
@@ -57,6 +57,19 @@ const HeroSection = ({ onOpenRoadmap }) => (
       <div className="flex flex-wrap justify-center gap-4">
       </div>
 
+      <NavLink
+            to="#"
+            className="inline-flex items-center gap-3 px-7 py-3 text-base sm:text-sm font-semibold rounded-xl transition-all duration-300"
+            style={{
+              background:
+                "linear-gradient(135deg, #f68003ff 0%, #f75307ff 100%)",
+              color: "white",
+              boxShadow:
+                "0 12px 25px rgba(253, 153, 2, 0.45)",
+            }}
+          >
+            Click Here to Start
+          </NavLink>
     </div>
   </section >
 );
@@ -82,7 +95,7 @@ const WhyTakeSection = () => (
           style={{ backgroundColor: COLORS.secondary }}
         />
         <p
-          className="text-sm sm:text-base max-w-4xl"
+          className="text-sm sm:text-base max-w-3xl"
           style={{ color: COLORS.textGray }}
         >
           A scientifically designed assessment that helps you make confident,
@@ -192,7 +205,7 @@ const WhyTakeSection = () => (
 // 3) HOW IT WORKS SECTION
 // --------------------------------------------------------------------
 const HowItWorksSection = () => (
-  <section className="py-16 bg-slate-50">
+  <section className="py-10 bg-slate-50">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
       {/* Section Heading */}

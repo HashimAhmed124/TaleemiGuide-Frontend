@@ -46,6 +46,17 @@ const SignUp = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
+  // ✅ Remove scrollbar
+  useEffect(() => {
+    document.body.style.margin = "0";
+    document.body.style.padding = "0";
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIsVisible(false);
@@ -63,27 +74,22 @@ const SignUp = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // For now (dummy auth phase), just redirect to login
     navigate("/login");
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col lg:flex-row">
-      {/* LEFT SLIDER SECTION */}
+    <div className="h-screen w-screen flex flex-col lg:flex-row overflow-hidden bg-gray-100">
+
+      {/* LEFT SLIDER */}
       <div
-        className={`hidden lg:flex lg:w-1/2 relative bg-cover bg-center items-end p-8 xl:p-10
-          transition-opacity duration-1000 ease-in-out
-          ${isVisible ? "opacity-100" : "opacity-100"}
-        `}
+        className={`hidden lg:flex lg:w-1/2 relative bg-cover bg-center items-end p-10 transition-opacity duration-1000`}
         style={{ backgroundImage: `url('${slide.image}')` }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/60 to-transparent" />
 
         <div
-          className={`relative z-10 text-white w-full max-w-xl
-            transform transition-all duration-1000 delay-200 ease-out
-            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-          `}
+          className={`relative z-10 text-white w-full max-w-xl transition-all duration-1000
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
           <span
             className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide mb-4"
@@ -100,7 +106,9 @@ const SignUp = () => {
             <span style={{ color: COLORS.secondary }}>{slide.subtitle}</span>
           </h2>
 
-          <p className="mt-3 text-sm text-slate-200 max-w-sm">{slide.description}</p>
+          <p className="mt-3 text-sm text-slate-200 max-w-sm">
+            {slide.description}
+          </p>
 
           <div className="mt-6 grid grid-cols-2 gap-3 max-w-md">
             {slide.points.map((point, index) => (
@@ -112,14 +120,20 @@ const SignUp = () => {
         </div>
       </div>
 
-      {/* RIGHT SIGN UP SECTION */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-[#0B1C3C]/10">
-        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-6 sm:p-8">
-          {/* Brand */}
+      {/* RIGHT SIGNUP */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-6 bg-[#f8fafc]/10">
+
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8 mt-20">
+
+          {/* Header */}
           <div className="mb-6 text-center">
-            <h1 className="text-2xl font-extrabold text-slate-900" style={{ color: COLORS.primaryDark }}>
+            <h1
+              className="text-2xl font-extrabold text-slate-900"
+              style={{ color: COLORS.primaryDark }}
+            >
               Create Account
             </h1>
+
             <p className="text-sm text-slate-500 mt-1">
               Join TaleemiGuide and shape your future
             </p>
@@ -127,11 +141,15 @@ const SignUp = () => {
 
           {/* FORM */}
           <form className="space-y-4" onSubmit={onSubmit}>
-            {/* Full Name */}
+
             <div>
-              <label className="text-sm font-semibold text-slate-700">Full Name</label>
+              <label className="text-sm font-semibold text-slate-700">
+                Full Name
+              </label>
+
               <div className="mt-1 relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+
                 <input
                   type="text"
                   placeholder="Enter your name"
@@ -140,11 +158,14 @@ const SignUp = () => {
               </div>
             </div>
 
-            {/* Email */}
             <div>
-              <label className="text-sm font-semibold text-slate-700">Email</label>
+              <label className="text-sm font-semibold text-slate-700">
+                Email
+              </label>
+
               <div className="mt-1 relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+
                 <input
                   type="email"
                   placeholder="@example.com"
@@ -153,11 +174,14 @@ const SignUp = () => {
               </div>
             </div>
 
-            {/* Password */}
             <div>
-              <label className="text-sm font-semibold text-slate-700">Password</label>
+              <label className="text-sm font-semibold text-slate-700">
+                Password
+              </label>
+
               <div className="mt-1 relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+
                 <input
                   type="password"
                   placeholder="••••••••"
@@ -166,11 +190,14 @@ const SignUp = () => {
               </div>
             </div>
 
-            {/* Confirm Password */}
             <div>
-              <label className="text-sm font-semibold text-slate-700">Confirm Password</label>
+              <label className="text-sm font-semibold text-slate-700">
+                Confirm Password
+              </label>
+
               <div className="mt-1 relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+
                 <input
                   type="password"
                   placeholder="••••••••"
@@ -185,6 +212,7 @@ const SignUp = () => {
             >
               Create Account
             </button>
+
           </form>
 
           {/* Footer */}
@@ -197,6 +225,7 @@ const SignUp = () => {
               Login
             </span>
           </p>
+
         </div>
       </div>
     </div>

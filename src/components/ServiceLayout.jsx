@@ -34,9 +34,9 @@ const serviceData = [
   },
   {
     id: "service-4",
-    title: "Subject Classification ( 1000+ Subjects Classified )",
+    title: "Subject Classification",
     path: "/service/subject-classification",
-    subtitle: "Understand Hierarchy of the Fileds — Clearly and Accurately.",
+    subtitle: "Understand Where Your Field Falls — Clearly and Accurately.",
   },
   {
     id: "service-5",
@@ -50,7 +50,7 @@ const serviceData = [
     title: "University Graduates Guidance",
     path: "/service/university-graduates-guidance",
     subtitle:
-      "Your Partner for Every Academic Challenge.",
+      "Your Partner for Every Academic Challenge — From Admission to Graduation.",
   },
   {
     id: "service-7",
@@ -200,6 +200,8 @@ const useCurrentService = () => {
   const location = useLocation();
   return serviceData.find((s) => s.path === location.pathname) || null;
 };
+
+
 
 // MAIN LAYOUT
 const ServiceLayout = ({ children }) => {

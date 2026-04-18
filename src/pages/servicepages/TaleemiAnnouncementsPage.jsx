@@ -40,12 +40,12 @@ const HeroSection = () => (
         Scholarships, Admissions, Internships & Opportunities — All in One Place.
       </span>
 
-      <h1 className="text-4xl md:text-4xl font-extrabold 
+      <h1 className="text-5xl md:text-5xl font-extrabold 
           leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
         Taleemi Announcements
       </h1>
 
-      <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-4">
+      <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
         TaleemiGuide continuously scans national and international platforms
         to bring you the latest academic and career opportunities. Whether
         you are a Matric student planning your future, an intermediate
@@ -57,13 +57,13 @@ const HeroSection = () => (
         curated to help you grow academically and professionally.
       </p>
 
-      {/* <div className="flex flex-wrap justify-center gap-4">
-         <button
+      <div className="flex flex-wrap justify-center gap-4">
+        {/* <button
           onClick={onOpenRoadmap}
           className="px-6 py-2 rounded-xl bg-orange-600 text-white font-semibold shadow-md hover:bg-orange-700 hover:scale-105 transition"
         >
           View Roadmap
-        </button> 
+        </button> */}
 
         <NavLink
           to="/roadmap/class-12"
@@ -71,7 +71,7 @@ const HeroSection = () => (
         >
           Explore Options
         </NavLink>
-      </div> */}
+      </div>
 
     </div>
   </section>

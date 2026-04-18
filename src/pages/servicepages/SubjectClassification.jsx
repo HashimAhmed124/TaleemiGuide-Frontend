@@ -39,18 +39,18 @@ const HeroSection = ({ onOpenRoadmap }) => {
         tracking-wide text-orange-600 bg-orange-100
          rounded-full text-start"
         >
-          Understand Hierarchy of the Fileds — Clearly and Accurately.
+          Understand Where Your Field Falls — Clearly and Accurately.
         </span>
 
         <h1
-          className="text-4xl md:text-4xl font-extrabold 
+          className="text-5xl md:text-5xl font-extrabold 
         leading-tight mb-6"
           style={{ color: COLORS.primaryDark }}
         >
           Choosing The Right Field For Your Subject
         </h1>
 
-        <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
           Choosing the right academic field or career is difficult when students
           know only a handful of traditional subjects — while in actual 1000+
           subjects exist across dozens of disciplines, which leads to different
@@ -227,7 +227,7 @@ const TwoInstrumentsSection = () => {
     <section className="py-16 border-b border-gray-200 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-4xl mb-12">
           <h2
             className="text-3xl sm:text-4xl font-extrabold  leading-tight"
             style={{ color: COLORS.primaryDark }}
@@ -235,7 +235,7 @@ const TwoInstrumentsSection = () => {
             Two Core Instruments for Maximum Clarity
           </h2>
           <div
-            className="w-188 h-1 rounded-full mb-5"
+            className="w-213 h-1 rounded-full mb-5"
             style={{ backgroundColor: COLORS.secondary }}
           />
           <p
@@ -316,7 +316,7 @@ const TwoInstrumentsSection = () => {
               Start With Confidence
             </p>
             <p
-              className="text-sm sm:text-base md:text-lg font-semibold leading-relaxed max-w-2xl"
+              className="text-sm sm:text-base md:text-lg font-semibold leading-relaxed max-w-3xl"
               style={{ color: COLORS.primaryDark }}
             >
               Explore subject classification and take your first step toward a
@@ -324,7 +324,16 @@ const TwoInstrumentsSection = () => {
             </p>
           </div>
 
-          
+          <button
+            type="button"
+            className="rounded-full px-6 py-3 text-sm font-semibold transition-transform duration-200 hover:scale-105"
+            style={{
+              backgroundColor: COLORS.primary,
+              color: "#fff",
+            }}
+          >
+            Explore Now
+          </button>
         </div>
       </div>
     </section>

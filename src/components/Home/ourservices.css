@@ -1,0 +1,4 @@
+/* Make slide movement smoother */
+.swiper-wrapper {
+  transition-timing-function: ease-in-out !important;
+}

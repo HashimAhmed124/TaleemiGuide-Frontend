@@ -25,25 +25,25 @@ export default function AboutPage() {
   const Feature = [
     {
       icon: <FaBook className="text-orange-600 text-7xl mb-4" />,
-      title: "10/12 Students",
+      title: "Class 10-12 Students",
       description:
         "Get clear guidance to choose the right subjects, stream, and future pathway with confidence.",
     },
     {
       icon: <FaGraduationCap className="text-orange-600 text-7xl mb-4" />,
-      title: "University Student",
+      title: "University Students",
       description:
         "Find direction for your major, skills, and career choices with expert-backed insights.",
     },
     {
       icon: <FaComputer className="text-orange-600 text-7xl mb-4" />,
-      title: "Graduates",
+      title: "University Graduates",
       description:
         "Discover your best-fit career options and higher-education pathways as you step into professional life.",
     },
     {
       icon: <FaGlobe className="text-orange-600 text-7xl mb-4" />,
-      title: "Professionals",
+      title: "Working Professionals",
       description:
         "Plan smarter career moves, upskill effectively, and explore new opportunities with personalized guidance.",
     },
@@ -126,7 +126,7 @@ export default function AboutPage() {
       title: "Philosophy",
       img: "/bg-1.jpg",
       subheading: "why choose us?",
-      desc: "Your future is built on the choices you make today. Every subject you select, every degree you pursue, and every career direction you consider shapes the life ahead of you. Because more than 70% of your adult life is spent at work, these decisions deserve care, clarity, and guidance. TaleemiGuide exists to walk with you on this journey — helping you choose with confidence, purpose, and self-belief.",
+      desc: "Your future is shaped by the choices you make today — the subjects you select, the degree you pursue, and the career path you choose. These decisions deserve clarity, confidence, and the right guidance. TaleemiGuide exists to support you at every step — helping you make informed choices with purpose and direction.",
     },
     {
       id: "vision",
@@ -155,22 +155,13 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-[#0B1C3C]/80"></div>
         <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-20">
-          <h1 className="text-white text-2xl md:text-4xl font-bold">
-            A Modern Guidance Platform for the Students of Pakistan
+          <h1 className="text-white text-4xl md:text-6xl font-bold">
+            About Us
           </h1>
 
           <span
             className="bg-white h-1 rounded mt-0 inline-block transition-all duration-700"
-            style={{ width: loaded ? "985px" : "0px" }}
-          />
-
-          <h2 className="text-white text-xl md:text-2xl font-bold mt-8">
-            Smart, Reliable, and Personalized Academic & Career Guidance
-          </h2>
-
-          <span
-            className="bg-white h-1 rounded mt-0 inline-block transition-all duration-700"
-            style={{ width: loaded ? "730px" : "0px" }}
+            style={{ width: loaded ? "280px" : "0px" }}
           />
 
           <motion.p
@@ -181,24 +172,19 @@ export default function AboutPage() {
           >
             <br />
             <h2 className="text-xl sm:text-xl lg:text-2xl font-bold leading-tight mb-1">
-              Who We Are
+              Modern Academic & Career Guidance for Students in Pakistan
             </h2>
-            <p className="text-justify">
-              Today’s education world is completely different from before. There
-              are countless colleges, hundreds of degree options, and careers
-              that change every year because of technology and AI. Most students
-              feel confused — and the old style of guidance is no longer enough.
-              <br />
-              <br />
-              <h2 className="text-xl sm:text-xl lg:text-xl font-bold leading-tight mb-1">
-                This is exactly why TaleemiGuide exists.
-              </h2>
-              We offer a smart, modern platform that gives students clear,
-              personalized, and trusted academic guidance. Whether you’re in
-              Class 10, choosing intermediate subjects, selecting a university
-              degree, or planning your career growth, TaleemiGuide helps you
-              make the right decisions with confidence.
-            </p>
+            Today’s education world is very different from before. Students face hundreds of degree options, thousands of institutions, and rapidly changing careers influenced by technology and AI. As a result, many students feel confused — and traditional guidance is no longer enough.
+            <br />
+            <br />
+            <h2 className="text-xl sm:text-xl lg:text-xl font-bold leading-tight mb-1">
+              This is exactly why TaleemiGuide exists.
+            </h2>
+            We offer a smart, modern platform that gives students clear,
+            personalized, and trusted academic guidance. Whether you’re in Class
+            10, choosing intermediate subjects, selecting a university degree,
+            or planning your career growth, TaleemiGuide helps you make the
+            right decisions with confidence.
           </motion.p>
         </div>
       </div>
@@ -235,9 +221,9 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-2xl md:text-3xl font-bold mb-6 flex-col"
+            className="text-3xl md:text-4xl font-bold mb-6 flex-col"
           >
-            Our Foundation & Team
+            Our Mission
           </motion.h2>
 
           <motion.p
@@ -246,17 +232,10 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg max-w-3xl leading-relaxed"
           >
-            Our knowledge base is built on years of experience and expertise
-            contributed by a powerful team of:
-            <ul className="mt-3 mb-3 space-y-1">
-            <li> • Educationists and Senior Academicians</li> 
-            <li> • Industry Specialists and Market Analysts</li>  
-            <li> • Psychologists and Certified Counsellors</li>  
-            </ul> 
-
-            Together, we help learners
-            make informed, confident academic and career decisions at every
-            stage of educational career.
+            TaleemiGuide is dedicated to helping students discover their true
+            potential. We connect students with expert counselors, provide
+            accurate career insights, and empower them to make informed
+            decisions about their academic journey.
           </motion.p>
 
           <img
@@ -295,18 +274,17 @@ export default function AboutPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 rounded-lg py-2 font-semibold border ${
-                    activeTab === tab.id
+                  className={`px-4 rounded-lg py-2 font-semibold border ${activeTab === tab.id
                       ? "bg-[#0B1C3C] text-white border-[#0B1C3C]"
                       : "bg-white text-[#0B1C3C] border-gray-300"
-                  }`}
+                    }`}
                 >
                   {tab.title}
                 </button>
               ))}
             </div>
 
-            {/* <motion.h2
+            <motion.h2
               key={current.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -314,14 +292,14 @@ export default function AboutPage() {
               className="text-3xl md:text-4xl font-bold mt-6 mb-4 text-[#0B1C3C]"
             >
               {current.title}
-            </motion.h2> */}
+            </motion.h2>
 
             <motion.p
               key={current.desc}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-lg leading-relaxed text-[#14223C] mt-6 mb-4"
+              className="text-lg leading-relaxed text-[#14223C]"
             >
               {current.desc}
               <img
@@ -352,10 +330,13 @@ export default function AboutPage() {
             <play size={55} color="white" />
             <FaPlay className=" w-50 h-16 ml-4 text-white/300" />
           </button>
-          <h2 className=" font-bold text-2xl md:text-3xl text-[#0B1C3C] mb-4">
-            Watch the Video to Know about our Work.
+          <h2 className=" font-bold text-4xl md:text-5xl text-[#0B1C3C] mb-4">
+            Watch Our Introduction Video
           </h2>
-          
+          <p className="text-lg text-[#0B1C3C] md:text-xl max-w-2xl mx-auto">
+            Introduction to TaleemiGuide and our mission to help students
+            succeed.
+          </p>
         </div>
         {showVideo && (
           <div className="fixed inset-0 bg-black/80 flex items-center justify-center justify-center z-20">
@@ -383,22 +364,22 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-3xl md:text-4xl font-bold mb-12 text-center"
         >
-          Why Choose TaleemiGuide?
+          Why Choose TaleemiGuide
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-10">
           {[
             {
-              title: "Easily Accessible",
-              text: "TaleemiGuide is accessible by students and learners from any location of the country.",
+              title: "Accessible Anywhere",
+              text: "TaleemiGuide is available to students across Pakistan, making guidance easy and convenient.",
             },
             {
               title: "Personalized Dashboard",
-              text: "The personalized dashboard facility is provided, that allows students to track their progress on submitted queries and career assessment reports.",
+              text: "Track your queries, progress, and career insights in one place.",
             },
             {
-              title: "Quick Response",
-              text: "TaleemiGuide provides prompt responses for educational solutions, and also allows one-on-one online counselling session with our dedicated experts.",
+              title: "Quick Response Time",
+              text: "Receive timely solutions and access one-on-one expert sessions when needed.",
             },
           ].map((item, index) => (
             <motion.div
@@ -419,7 +400,7 @@ export default function AboutPage() {
 
       {/* ================= OUR BOARD MEMBERS ================= */}
 
-      <section className="py-8 px-6 md:px-20 bg-[url('/bg-2.jpg')] bg-cover bg-center bg-no-repeat">
+      {/* <section className="py-8 px-6 md:px-20 bg-[url('/bg-2.jpg')] bg-cover bg-center bg-no-repeat">
         <div className="w-full bg-[#0B1C3C]/80 py-4 px-6 md:px-10 text-center rounded-xl">
           <div className="flex flex-col items-center">
             <h2 className="font-bold text-3xl text-white">
@@ -488,11 +469,10 @@ export default function AboutPage() {
                   key={member.id}
                   whileHover={{ scale: 1.05 }}
                   onClick={() => setSelected(member)}
-                  className={`cursor-pointer p-3 rounded-xl bg-[#0B1C3C] transition-all duration-300 border-2  ${
-                    selected.id === member.id
+                  className={`cursor-pointer p-3 rounded-xl bg-[#0B1C3C] transition-all duration-300 border-2  ${selected.id === member.id
                       ? "border-white shadow-xl"
                       : "border-transparent"
-                  }`}
+                    }`}
                 >
                   <img
                     src={member.img}
@@ -521,7 +501,7 @@ export default function AboutPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

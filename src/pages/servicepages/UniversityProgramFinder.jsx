@@ -60,14 +60,14 @@ const HeroSection = ({ onOpenRoadmap }) => {
         </span>
 
         <h1
-          className="text-4xl md:text-4xl font-extrabold 
+          className="text-5xl md:text-5xl font-extrabold 
         leading-tight mb-6"
           style={{ color: COLORS.primaryDark }}
         >
           University Program Finder
         </h1>
 
-        <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
           Welcome to Pakistan’s first comprehensive University Program Finder,
           powered by TaleemiGuide. Now, you can explore every BS, MS/MPhil, and
           PhD program offered across all universities — verified, updated,
@@ -88,12 +88,12 @@ const HeroSection = ({ onOpenRoadmap }) => {
             View Roadmap
           </button> */}
 
-          <NavLink
+          {/* <NavLink
             to="/roadmap/class-12"
             className="px-6 py-2 rounded-xl border border-[#11253e] text-[#11253e] font-semibold hover:bg-[#11253e] hover:text-white transition"
           >
             Explore Options
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
     </section>
@@ -157,7 +157,7 @@ const WhyThisMattersSection = () => (
 );
 
 // --------------------------------------------------------------------
-// 3) WHAT YOU CAN DO
+// 3) Pakistan’s Largest Verified Academic Database
 // --------------------------------------------------------------------
 const WhatYouCanDoSection = () => (
   <section className="py-14 border-b border-gray-200">
@@ -168,10 +168,10 @@ const WhatYouCanDoSection = () => (
           className="text-2xl sm:text-3xl font-extrabold "
           style={{ color: COLORS.primaryDark }}
         >
-          What You Can Do
+          Pakistan’s Largest Verified Academic Database
         </h2>
         <div
-          className="w-65 h-1 rounded-full mb-5"
+          className="w-195 h-1 rounded-full mb-5"
           style={{ backgroundColor: COLORS.secondary }}
         />
 
@@ -538,7 +538,7 @@ export default function UniversityProgramFinder() {
       <HeroSection />
       <WhyThisMattersSection />
       <WhatYouCanDoSection />
-      {/* <IntegrationSection /> */}
+      <IntegrationSection />
       <NextStepSection />
     </ServiceLayout>
   );

@@ -48,94 +48,105 @@ const HeroIntroSection = ({ onOpenRoadmap }) => {
 
   return (
     <section className="relative bg-gradient-to-br from-blue-50 via-white to-white">
-  {/* Full width small-height image */}
-  <div className="w-full h-[220px] md:h-[280px] lg:h-[320px] overflow-hidden">
-    <img
-      src={class10Hero}
-      alt="Class 10 academic guidance overview"
-      className="w-full h-full object-center rounded-3xl"
-    />
-  </div>
-
-  {/* Content */}
-  <div
-    className="max-w-5xl mx-auto px-4 sm:px-6  lg:px-8 py-4 md:py-4 text-center"
-    // Updated: Reduced vertical padding from py-8 md:py-10 → py-4 md:py-6
-  >
-    <span className="inline-block mb-4 px-4 py-1 text-sm font-semibold tracking-wide text-orange-600 bg-orange-100 rounded-full text-start">
-      Your First Major Academic Decision Starts Here.
-    </span>
-
-    <h1
-      className="text-5xl md:text-4xl font-extrabold leading-tight mb-6"
-      style={{ color: COLORS.primaryDark }}
-    >
-      Choosing the Right Path After Matric
-    </h1>
-
-    <p
-      className="text-sm text-gray-600 text-justify max-w-3xl mx-auto mb-6 leading-relaxed"
-      // Updated: Reduced margin-bottom from mb-10 → mb-6
-      // Kept text-justify and leading-relaxed for readability
-    >
-      After completing Grade 10, students enter one of the most important
-      phases of their academic life. This is the point where they must
-      choose a stream — a choice that shapes their future studies,
-      university options, and eventually the careers they qualify for.
-      However, most students and parents face the same challenge: minimum
-      reliable information and maximum confusion. At this stage, students
-      often make decisions based on family expectations, friends’ choices,
-      trends and “scope” discussions, and incomplete or outdated guidance.
-    </p>
-
-    {/* 🔹 Key Questions Section */}
-    <div
-      className="mt-6  md:mt-8 max-w-4xl mx-auto text-left rounded-2xl p-5 md:p-7"
-      //  Updated: Reduced margin-top from mt-10 md:mt-12 → mt-6 md:mt-8
-      style={{
-        backgroundColor: COLORS.surface,
-        border: `1px solid ${COLORS.borderSoft}`,
-        boxShadow: "0 12px 32px rgba(15,23,42,0.06)",
-      }}
-    >
-      <p
-        className="text-xs font-semibold uppercase tracking-wide mb-4"
-        style={{ color: COLORS.secondary }}
-      >
-        Key Questions at This Stage
-      </p>
-
-      <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
-        <ul
-          className="space-y-1.5 text-sm md:text-base"
-          style={{ color: COLORS.textMuted }}
-        >
-          {leftQuestions.map((q, idx) => (
-            <li key={idx}>• {q}</li>
-          ))}
-        </ul>
-
-        <ul
-          className="space-y-1.5 text-sm md:text-base"
-          style={{ color: COLORS.textMuted }}
-        >
-          {rightQuestions.map((q, idx) => (
-            <li key={idx}>• {q}</li>
-          ))}
-        </ul>
+      {/* Full width small-height image */}
+      <div className="w-full h-[220px] md:h-[280px] lg:h-[320px] overflow-hidden">
+        <img
+          src={class10Hero}
+          alt="Class 10 academic guidance overview"
+          className="w-full h-full object-center rounded-3xl"
+        />
       </div>
 
-      <p
-        className="text-sm leading-relaxed mt-5"
-        style={{ color: COLORS.textMuted }}
-      >
-        For both students and parents, this is one of the most stressful and
-        uncertain decision points due to lack of structured, verified
-        information — now made easy by <strong>TaleemiGuide!</strong>
-      </p>
-    </div>
-  </div>
-</section>
+      {/* Content */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 text-center">
+        <span
+          className="inline-block mb-4 px-4 py-1 text-sm font-semibold tracking-wide text-orange-600 bg-orange-100 rounded-full text-start"
+        >
+          Your First Major Academic Decision Starts Here.
+        </span>
+
+        <h1
+          className="text-5xl md:text-5xl font-extrabold leading-tight mb-6"
+          style={{ color: COLORS.primaryDark }}
+        >
+          Choosing the Right Path After Matric
+        </h1>
+
+        <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
+          After completing Grade 10, students enter one of the most important
+          phases of their academic life. This is the point where they must
+          choose a stream — a choice that shapes their future studies,
+          university options, and eventually the careers they qualify for.
+          However, most students and parents face the same challenge: minimum
+          reliable information and maximum confusion. At this stage, students
+          often make decisions based on family expectations, friends’ choices,
+          trends and “scope” discussions, and incomplete or outdated guidance.
+        </p>
+
+        {/* <div className="flex flex-wrap justify-center gap-4">
+          <button
+            type="button"
+            onClick={onOpenRoadmap}
+            className="px-6 py-2 rounded-xl bg-orange-600 text-white font-semibold shadow-md hover:bg-orange-700 hover:scale-105 transition"
+          >
+            View Roadmap
+          </button>
+
+          <NavLink
+            to="/roadmap/class-12"
+            className="px-6 py-2 rounded-xl border border-[#11253e] text-[#11253e] font-semibold hover:bg-[#11253e] hover:text-white transition"
+          >
+            Explore Options
+          </NavLink>
+        </div> */}
+
+        {/* 🔹 Key Questions Section */}
+        <div
+          className="mt-10 md:mt-12 max-w-4xl mx-auto text-left rounded-2xl p-5 md:p-7"
+          style={{
+            backgroundColor: COLORS.surface,
+            border: `1px solid ${COLORS.borderSoft}`,
+            boxShadow: "0 12px 32px rgba(15,23,42,0.06)",
+          }}
+        >
+          <p
+            className="text-xs font-semibold uppercase tracking-wide mb-4"
+            style={{ color: COLORS.secondary }}
+          >
+            Key Questions at This Stage
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+            <ul
+              className="space-y-1.5 text-sm md:text-base"
+              style={{ color: COLORS.textMuted }}
+            >
+              {leftQuestions.map((q, idx) => (
+                <li key={idx}>• {q}</li>
+              ))}
+            </ul>
+
+            <ul
+              className="space-y-1.5 text-sm md:text-base"
+              style={{ color: COLORS.textMuted }}
+            >
+              {rightQuestions.map((q, idx) => (
+                <li key={idx}>• {q}</li>
+              ))}
+            </ul>
+          </div>
+
+          <p
+            className="text-sm leading-relaxed mt-5"
+            style={{ color: COLORS.textMuted }}
+          >
+            For both students and parents, this is one of the most stressful and
+            uncertain decision points due to lack of structured, verified
+            information — now made easy by <strong>TaleemiGuide!</strong>
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -143,7 +154,7 @@ const HeroIntroSection = ({ onOpenRoadmap }) => {
 // 2) HOW TALEEMIGUIDE HELPS – SINGLE COLUMN
 // --------------------------------------------------------------------
 const HowTaleemiGuideHelpsSection = ({ onOpenRoadmap }) => (
-  <section className="py-6 md:py-10">
+  <section className="py-16 md:py-20">
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="p-6 md:p-8" style={cardStyle}>
         <h2 className="text-2xl font-bold" style={{ color: COLORS.primaryDark }}>
@@ -160,16 +171,14 @@ const HowTaleemiGuideHelpsSection = ({ onOpenRoadmap }) => (
           className="text-base text-sm leading-relaxed mb-4"
           style={{ color: COLORS.textMuted }}
         >
-          TaleemiGuide is Pakistan’s tech-enabled educational guidance platform,
-          developed by educationists, counselors, and industry professionals.
+          TaleemiGuide helps you choose the right stream after Matric by clearly explaining your options, future pathways, and how they match your strengths. 
         </p>
 
         <p
           className="text-base text-sm leading-relaxed mb-6"
           style={{ color: COLORS.textMuted }}
         >
-          We ensure students understand every option, its requirements, and
-          future implications before making a decision.
+          With structured guidance and career insights, you can make a confident decision without relying on guesswork.
         </p>
 
         <button
@@ -201,7 +210,7 @@ const OptionsSection = ({ onSeekAdviceClick }) => (
         className="text-4xl font-bold text-center"
         style={{ color: COLORS.primaryDark }}
       >
-        Three Guidance Pathways for Class 10 Students
+        Three Paths to the Right Decision
       </h2>
 
       {/* FIX: w-122 is not a Tailwind class */}
@@ -267,7 +276,7 @@ const OptionsSection = ({ onSeekAdviceClick }) => (
             interests, strengths, and aptitude, this test is for you. Attempt it
             in a relaxed environment and receive a concise Personalized Career
             Profile with your top interests, strengths, best-fit fields, and
-            recommended stream after Matric. For Career Assessment Test;
+            recommended stream after Matric. <p className="font-bold text-orange-600">(Recommended)</p>
           </p>
           <NavLink
             to="/service/career-assessment"
@@ -325,51 +334,51 @@ const OptionsSection = ({ onSeekAdviceClick }) => (
 // --------------------------------------------------------------------
 // 4) TALEEMI ADVICE FORM SECTION (SCROLL TARGET)
 // --------------------------------------------------------------------
-// const TaleemiAdviceFormSection = ({ sectionRef }) => {
-//   return (
-//     <section
-//       ref={sectionRef}
-//       className="py-16 md:py-24 border-t border-gray-200"
-//       style={{
-//         background: `linear-gradient(to bottom right, ${COLORS.lightBackground} 0%, white 100%)`,
-//       }}
-//     >
-//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="max-w-4xl mx-auto space-y-10">
-//           {/* Title & Description Header */}
-//           <div className="text-center space-y-3">
-//             <h2
-//               className="text-2xl md:text-3xl lg:text-4xl font-extrabold"
-//               style={{ color: COLORS.primaryDark }}
-//             >
-//               Need Quick Help? (Seek Taleemi Advice)
-//             </h2>
+const TaleemiAdviceFormSection = ({ sectionRef }) => {
+  return (
+    <section
+      ref={sectionRef}
+      className="py-16 md:py-24 border-t border-gray-200"
+      style={{
+        background: `linear-gradient(to bottom right, ${COLORS.lightBackground} 0%, white 100%)`,
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-10">
+          {/* Title & Description Header */}
+          <div className="text-center space-y-3">
+            <h2
+              className="text-2xl md:text-3xl lg:text-4xl font-extrabold"
+              style={{ color: COLORS.primaryDark }}
+            >
+              Need Quick Help? (Seek Taleemi Advice)
+            </h2>
 
-//             <p
-//               className="text-center max-w-2xl mx-auto text-base leading-relaxed"
-//               style={{ color: COLORS.textGray }}
-//             >
-//               <span className="font-semibold" style={{ color: COLORS.primary }}>
-//                 Taleemi Advice
-//               </span>{" "}
-//               is your academic emergency service. Whether you're choosing
-//               subjects, facing confusion, stuck in academic challenges, or
-//               planning a career transition — get expert guidance in time.
-//             </p>
+            <p
+              className="text-center max-w-2xl mx-auto text-base leading-relaxed"
+              style={{ color: COLORS.textGray }}
+            >
+              <span className="font-semibold" style={{ color: COLORS.primary }}>
+                Taleemi Advice
+              </span>{" "}
+              is your academic emergency service. Whether you're choosing
+              subjects, facing confusion, stuck in academic challenges, or
+              planning a career transition — get expert guidance in time.
+            </p>
 
-//             <NavLink
-//               to="/service"
-//               className="inline-block mt-2 px-4 py-2 rounded-lg text-sm font-medium text-center"
-//               style={{ backgroundColor: COLORS.secondary, color: "white" }}
-//             >
-//               Get help
-//             </NavLink>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
+            <NavLink
+              to="/service"
+              className="inline-block mt-2 px-4 py-2 rounded-lg text-sm font-medium text-center"
+              style={{ backgroundColor: COLORS.secondary, color: "white" }}
+            >
+              Get help
+            </NavLink>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // --------------------------------------------------------------------
 // 5) NEXT STEP SECTION (LAYOUT CONSISTENT)
@@ -527,7 +536,7 @@ export default function Class10Guidance() {
 
       <HowTaleemiGuideHelpsSection onOpenRoadmap={() => setRoadmapOpen(true)} />
       <OptionsSection onSeekAdviceClick={handleSeekAdviceClick} />
-      {/* <TaleemiAdviceFormSection sectionRef={adviceRef} /> */}
+      <TaleemiAdviceFormSection sectionRef={adviceRef} />
       <NextStepSection />
       <RoadmapModal open={roadmapOpen} onClose={() => setRoadmapOpen(false)} />
     </ServiceLayout>

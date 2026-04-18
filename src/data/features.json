@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "FaBook",
+        "title": "Comprehensive Resources",
+        "description": "Access a wide range of study materials, guides, and expert advice all in one place."
+    },
+    {
+        "icon": "FaGraduationCap",
+        "title": "Expert Counselors",
+        "description": "Connect with certified education counselors who understand your unique needs."
+    },
+    {
+        "icon": "FaComputer",
+        "title": "Tech & Tools",
+        "description": "Utilize modern educational tools and platforms to enhance learning."
+    },
+    {
+        "icon": "FaGlobe",
+        "title": "Global Opportunities",
+        "description": "Explore study programs, scholarships, and career paths worldwide."
+    }
+]

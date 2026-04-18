@@ -27,7 +27,7 @@ const HeroSection = () => (
     </div>
 
     {/* Content */}
-    <div className="max-w-5xl mx-auto px-6 py-6 text-center">
+    <div className="max-w-5xl mx-auto px-6 py-8 text-center">
 
       <span className="inline-block mb-4 px-4 py-1 
         text-sm font-semibold 
@@ -36,12 +36,12 @@ const HeroSection = () => (
         Personalized One-on-One Guidance for Students, Parents & Professionals.
       </span>
 
-      <h1 className="text-4xl md:text-4xl font-extrabold 
+      <h1 className="text-5xl md:text-5xl font-extrabold 
         leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
         Book Online Session
       </h1>
 
-      <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-6">
+      <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
         Whether you’re a student choosing a specialization, a parent seeking
         clarity, a college/university graduate facing academic challenges,
         or a working professional navigating career transitions, our expert
@@ -327,7 +327,7 @@ const HowToBookSection = () => (
             01
           </div>
           <p className="text-sm sm:text-base" style={{ color: COLORS.textGray }}>
-            Provide brief details of you concern and attach document for review.
+            Click <strong>“Book an Appointment”</strong> on the Home Page.
           </p>
         </div>
 
@@ -342,19 +342,19 @@ const HowToBookSection = () => (
         </div>
 
         {/* Step 3 */}
-        {/* <div className="flex gap-4 p-5 rounded-2xl bg-white shadow-md hover:shadow-lg transition">
+        <div className="flex gap-4 p-5 rounded-2xl bg-white shadow-md hover:shadow-lg transition">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-500 text-white font-bold">
-            02
+            03
           </div>
           <p className="text-sm sm:text-base" style={{ color: COLORS.textGray }}>
             Fill out the booking form and attach any documents for review.
           </p>
-        </div> */}
+        </div>
 
-        {/* Step 3 */}
+        {/* Step 4 */}
         <div className="flex gap-4 p-5 rounded-2xl bg-white shadow-md hover:shadow-lg transition">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-500 text-white font-bold">
-            03
+            04
           </div>
           <p className="text-sm sm:text-base" style={{ color: COLORS.textGray }}>
             Receive a confirmation email with a secure session link.
@@ -385,16 +385,16 @@ const InvestInYourFutureSection = () => (
         /></div>
 
       <p
-        className="text-sm sm:text-base leading-relaxed mb-6 max-w-4xl"
+        className="text-sm sm:text-base leading-relaxed mb-6 max-w-3xl"
         style={{ color: COLORS.textGray }}
       >
         A single conversation with the right expert can change your direction —
         and your future.
-        
+        <br />
         Take the next step toward clarity, confidence, and achievement.
       </p>
 
-      {/* <button
+      <button
         type="button"
         className="w-full sm:w-auto text-left sm:text-center rounded-3xl px-6 py-5 sm:px-8 sm:py-6 font-semibold text-sm sm:text-base transition-transform duration-200 hover:scale-[1.02]"
         style={{
@@ -407,7 +407,7 @@ const InvestInYourFutureSection = () => (
       >
         Book your online session today and receive personalized guidance from
         the experts at TaleemiGuide.
-      </button> */}
+      </button>
     </div>
   </section>
 );
@@ -495,7 +495,7 @@ export default function BookOnlineSession() {
       <WhatToExpectSection />
       <HowToBookSection />
       <InvestInYourFutureSection />
-      {/* <NextStepSection /> */}
+      <NextStepSection />
     </ServiceLayout>
   );
 }

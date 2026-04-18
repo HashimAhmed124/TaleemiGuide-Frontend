@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   MonitorSmartphone,
   ArrowRight,
-  Flag,
 } from "lucide-react";
 
 import ServiceLayout from "../../components/ServiceLayout";
@@ -53,12 +52,12 @@ const HeroSection = ({ onOpenRoadmap }) => {
           Fast-Track Help for Academic & Career Challenges — Your 1122 for Education.
         </span>
 
-        <h1 className="text-4xl md:text-4xl font-extrabold 
+        <h1 className="text-5xl md:text-5xl font-extrabold 
           leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
           Taleemi Advice
         </h1>
 
-        <p className="text-xm text-justify text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
           In the fast-moving world of education and careers, timely guidance
           can make all the difference. Whether you are a student facing an
           urgent academic issue or a professional seeking immediate clarity,
@@ -128,7 +127,8 @@ const WhatMakesUniqueSection = () => (
               <>
                 <p>
                   Some decisions can’t wait. Taleemi Advice works like <strong>1122 in the academic world</strong>, giving you urgent access to expert advice, reliable information, and clear answers — fast.
-                
+                </p>
+                <p className="mt-2">
                   Whenever you face uncertainty, confusion, or a time-sensitive issue, we are here with instant, expert-backed support.
                 </p>
               </>
@@ -170,19 +170,9 @@ const WhatMakesUniqueSection = () => (
               <>
                 <p>
                   The TaleemiGuide interface is designed for simplicity.
-               
-                  Connect with experts, upload documents, and receive guidance quickly and conveniently — anytime, anywhere.
                 </p>
-              </>
-            ),
-          },
-          {
-            icon: <Flag size={20} style={{ color: COLORS.secondary }} />,
-            title: "Let’s Get Started",
-            content: (
-              <>
-                <p>
-                  Don’t let academic or career challenges delay your progress. Take the first step toward clarity and confidence — get expert help instantly.
+                <p className="mt-2">
+                  Connect with experts, upload documents, and receive guidance quickly and conveniently — anytime, anywhere.
                 </p>
               </>
             ),
@@ -333,7 +323,7 @@ const NextStepSection = () => (
             style={{ color: COLORS.textGray }}
           >
             If you want personalized guidance or need to discuss your case in
-            detail, you may book an Online Session with our expert
+            detail, your next step is to Book an Online Session with our expert
             counselors.
           </p>
 
@@ -366,7 +356,7 @@ export default function TaleemiAdvice() {
     <ServiceLayout>
       <HeroSection />
       <WhatMakesUniqueSection />
-      {/* <TaleemiAdviceFormSection /> */}
+      <TaleemiAdviceFormSection />
       <NextStepSection />
     </ServiceLayout>
   );
