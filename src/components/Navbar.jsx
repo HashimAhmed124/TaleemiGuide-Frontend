@@ -10,6 +10,7 @@ import {
   LogOut,
 } from "lucide-react";
 
+
 export default function Navbar({
   isAuthed = false,
   user = { name: "User", avatarUrl: "" },
@@ -108,6 +109,7 @@ export default function Navbar({
 
           {/* RIGHT: Desktop actions */}
           <div className="flex items-center gap-3">
+            
             {!isAuthed ? (
               <>
                 <button
@@ -121,7 +123,7 @@ export default function Navbar({
                   onClick={goAppointment}
                   className="hidden md:inline-flex px-5 py-2 rounded-lg text-sm font-semibold bg-[#F97316] text-white hover:bg-[#EA580C] shadow-lg transition duration-300"
                 >
-                  Make An Appointment
+                  Book Session
                 </button>
               </>
             ) : (

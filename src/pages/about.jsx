@@ -330,13 +330,10 @@ export default function AboutPage() {
             <play size={55} color="white" />
             <FaPlay className=" w-50 h-16 ml-4 text-white/300" />
           </button>
-          <h2 className=" font-bold text-4xl md:text-5xl text-[#0B1C3C] mb-4">
-            Watch Our Introduction Video
+          <h2 className=" font-bold text-3xl md:text-4xl text-[#0B1C3C] mb-4">
+            Watch the Video to Learn More About TaleemiGuide
           </h2>
-          <p className="text-lg text-[#0B1C3C] md:text-xl max-w-2xl mx-auto">
-            Introduction to TaleemiGuide and our mission to help students
-            succeed.
-          </p>
+          
         </div>
         {showVideo && (
           <div className="fixed inset-0 bg-black/80 flex items-center justify-center justify-center z-20">

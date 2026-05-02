@@ -223,7 +223,7 @@ const WhatMakesUniqueSection = () => (
 );
 
 // --------------------------------------------------------------------
-// 3) TALEEMI ADVICE FORM (REUSABLE COMPONENT)
+// 3) TALEEMI ADVICE FORM (REUSABLE COMPONENT) OLD Version
 // --------------------------------------------------------------------
 const TaleemiAdviceFormSection = ({ sectionRef }) => {
   return (
@@ -275,6 +275,174 @@ const TaleemiAdviceFormSection = ({ sectionRef }) => {
     </section>
   );
 };
+
+// --------------------------------------------------------------------
+// 3) Taleemi Advice Form NEW
+// --------------------------------------------------------------------
+const TaleemiAdviceForm = ({ selectedCategory }) => {
+  const [fileName, setFileName] = useState("No file chosen");
+  const [category, setCategory] = useState(selectedCategory || "");
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFileName(`${e.target.files.length} file(s) selected`);
+    } else {
+      setFileName("No file chosen");
+    }
+  };
+
+  // useEffect(() => {
+  //   if (selectedCategory) {
+  //     setCategory(selectedCategory);
+  //   }
+  // }, [selectedCategory]);
+
+  return (
+    <section
+      id="form"
+      className="relative w-full min-h-2xl py-16 px-6"
+      style={{
+        backgroundImage: "url(/image.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="absolute inset-0 bg-[#0B1C3C]/80 w-full h-full" />
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
+        {/* LEFT IMAGE PANEL */}
+
+        <div
+          className="relative hidden md:flex items-end p-10"
+          style={{
+            backgroundImage: "url('/image.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/60 to-transparent" />
+
+          <div className="relative z-10 text-white">
+            <span
+              className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide"
+              style={{
+                background: "rgba(249,115,22,0.18)",
+                border: "1px solid rgba(249,115,22,0.35)",
+              }}
+            >
+              TaleemiGuide • Quick Help
+            </span>
+
+            <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold leading-tight">
+              Need Expert
+              <span style={{ color: COLORS.secondary }}> Academic Advice</span>?
+            </h2>
+
+            <div className="mt-6 grid grid-cols-2 gap-3 max-w-md">
+              <div className="rounded-xl bg-white/10 border border-white/10 p-3">
+                <p className="text-xs text-slate-200">Response</p>
+                <p className="text-sm font-semibold">Within 24–48 hrs</p>
+              </div>
+              <div className="rounded-xl bg-white/10 border border-white/10 p-3">
+                <p className="text-xs text-slate-200">Private</p>
+                <p className="text-sm font-semibold">Secure & Confidential</p>
+              </div>
+            </div>
+
+            <p className="mt-3 text-sm text-slate-200 max-w-sm">
+              Share your situation and get personalized guidance from
+              TaleemiGuide experts.
+            </p>
+          </div>
+        </div>
+
+        {/* FORM PANEL */}
+        <div className="bg-white p-8 md:p-12">
+          <h3
+            className="text-3xl font-bold mb-6"
+            style={{ color: COLORS.primary }}
+          >
+            Request for Academic Guidance
+          </h3>
+
+          <form className="space-y-5">
+            {/* Inputs */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {["Name", "Email", "Phone"].map((item) => (
+                <input
+                  key={item}
+                  type={
+                    item === "Email"
+                      ? "email"
+                      : item === "Phone"
+                      ? "tel"
+                      : "text"
+                  }
+                  placeholder={item}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:outline-none"
+                />
+              ))}
+            </div>
+
+            {/* Category */}
+            <select
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:outline-none"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="" disabled >
+                Select your category
+              </option>
+              <option value="class_10">Class 10</option>
+              <option value="class_12">Class 12</option>
+              <option value="university">University Graduate</option>
+              <option value="working_pro">Working Professional</option>
+            </select>
+
+            {/* Query */}
+            <textarea
+              rows="4"
+              placeholder="Describe your concern..."
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:outline-none"
+            />
+
+            {/* File Upload */}
+            <div className="flex items-center gap-4">
+              <label
+                htmlFor="fileUpload"
+                className="px-5 py-2 rounded-md cursor-pointer font-medium"
+                style={{ background: COLORS.secondary, color: "white" }}
+              >
+                Upload File
+              </label>
+              <span className="text-sm text-gray-500">{fileName}</span>
+              <input
+                id="fileUpload"
+                type="file"
+                multiple
+                className="hidden"
+                onChange={handleFileChange}
+              />
+            </div>
+
+            {/* Submit */}
+            <button
+              className="w-full py-3 rounded-lg font-semibold text-white transition hover:opacity-90"
+              style={{ background: COLORS.primary }}
+            >
+              Submit
+            </button>
+            <p className="text-xs text-gray-400 pt-1">
+              By submitting, you agree to be contacted by TaleemiGuide for
+              guidance purposes.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // --------------------------------------------------------------------
 // 4) NEXT STEP IN THE JOURNEY
 // --------------------------------------------------------------------
@@ -357,6 +525,7 @@ export default function TaleemiAdvice() {
       <HeroSection />
       <WhatMakesUniqueSection />
       <TaleemiAdviceFormSection />
+      
       <NextStepSection />
     </ServiceLayout>
   );

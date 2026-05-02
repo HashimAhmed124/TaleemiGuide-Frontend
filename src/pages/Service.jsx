@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   BookOpen,
   User,
@@ -12,125 +13,131 @@ import {
   ChevronRight,
   Layers,
   ArrowRight,
-} from 'lucide-react';
+} from "lucide-react";
 import { Info } from "lucide-react";
-import { FaBook, FaGraduationCap, FaArrowCircleRight, FaGlobe } from "react-icons/fa";
+import {
+  FaBook,
+  FaGraduationCap,
+  FaArrowCircleRight,
+  FaGlobe,
+} from "react-icons/fa";
 import { FaComputer } from "react-icons/fa6";
-
-
 
 // --- UNIFIED COLOR PALETTE ---
 const COLORS = {
-  primary: '#0B1C3C',
-  secondary: '#F97316',
-  color: '#ff9c55ff',
-  textGray: '#4B5563',
-  lightBackground: '#EFF6FF',
-  primaryDark: '#11253e',
-  Dark: '#000'
+  primary: "#0B1C3C",
+  secondary: "#F97316",
+  color: "#ff9c55ff",
+  textGray: "#4B5563",
+  lightBackground: "#EFF6FF",
+  primaryDark: "#11253e",
+  Dark: "#000",
 };
 
 // --- FILTER CATEGORIES ---
 const FILTERS = [
-  { id: 'all', label: 'All services' },
-  { id: 'school', label: 'School & College' },
-  { id: 'university', label: 'University Journey' },
-  { id: 'career', label: 'Career & Work' },
-  { id: 'support', label: 'Quick Support & Tools' },
+  { id: "all", label: "All services" },
+  { id: "school", label: "Class 10 & 12" },
+  { id: "subject", label: "Explore Fields" },
+  { id: "university", label: "University Journey" },
+  { id: "career", label: "Working Professionals" },
+  { id: "support", label: "Quick Support & Tools" },
 ];
-
 
 // --- Service Data (now with categories + clean titles) ---
 const serviceData = [
   {
-    id: 'service-1',
-    title: 'Class 10 Guidance',
-    img: '/bg-6.jpg',
-    description: 'Your first major academic decision — choose the right stream after Matric.',
+    id: "service-1",
+    title: "Class 10 Guidance",
+    img: "/bg-6.jpg",
+    description:
+      "Your first major academic decision — choose the right stream after Matric.",
     icon: User,
-    path: '/service/class-10-guidance',
-    category: 'school',
+    path: "/service/class-10-guidance",
+    category: "school",
   },
   {
-    id: 'service-2',
-    title: 'Class 12 Guidance',
-    img: '/bg-4.jpg',
-    description: 'Select the right specialization before entering university.',
+    id: "service-2",
+    title: "Class 12 Guidance",
+    img: "/bg-4.jpg",
+    description: "Select the right specialization before entering university.",
     icon: GraduationCap,
-    path: '/service/class-12-guidance',
-    category: 'school',
+    path: "/service/class-12-guidance",
+    category: "school",
   },
   {
-    id: 'service-3',
-    title: 'Career Assessment Test',
-    img: '/bg-5.jpg',
-    description: 'Discover your best-fit fields through a psychometric evaluation.',
+    id: "service-3",
+    title: "Career Assessment Test",
+    img: "/bg-5.jpg",
+    description: "Discover fields and careers that match your strengths.",
     icon: Briefcase,
-    path: '/service/career-assessment',
-    category: 'career',
+    path: "/service/career-assessment",
+    category: "subject",
   },
   {
-    id: 'service-4',
-    title: 'Subject Classification',
-    img: '/bg-3.jpg',
-    description: 'Explore 1,000+ categorized subjects.',
+    id: "service-4",
+    title: "Subject Classification",
+    img: "/bg-3.jpg",
+    description:
+      "Explore 1,000+ academic subjects organized into clear categories",
     icon: Grid,
-    path: '/service/subject-classification',
-    category: 'university',
+    path: "/service/subject-classification",
+    category: "subject",
   },
   {
-    id: 'service-5',
-    title: 'University Program Finder',
-    img: '/bg-7.jpeg',
-    description: 'Search BS/MS/PhD programs in all Pakistani universities.',
+    id: "service-5",
+    title: "University Program Finder",
+    img: "/bg-7.jpeg",
+    description: "Search BS/MS/PhD programs in all Pakistani universities.",
     icon: Search,
-    path: '/service/university-program-finder',
-    category: 'university',
+    path: "/service/university-program-finder",
+    category: "university",
   },
   {
-    id: 'service-6',
-    title: 'University Graduates Guidance',
-    img: '/bg-8.jpeg',
-    description: 'Resolve academic and research challenges during university life.',
+    id: "service-6",
+    title: "University Graduates Guidance",
+    img: "/bg-8.jpeg",
+    description:
+      "Resolve academic and research challenges during university life.",
     icon: BookOpen,
-    path: '/service/university-graduates-guidance',
-    category: 'university',
+    path: "/service/university-graduates-guidance",
+    category: "university",
   },
   {
-    id: 'service-7',
-    title: 'Working Professionals Guidance',
-    img: '/bg-9.jpg',
-    description: 'Align skills, education, and career growth.',
+    id: "service-7",
+    title: "Working Professionals Guidance",
+    img: "/bg-9.jpg",
+    description: "Align skills, education, and career growth.",
     icon: Briefcase,
-    path: '/service/working-professional-guidance',
-    category: 'career',
+    path: "/service/working-professional-guidance",
+    category: "career",
   },
   {
-    id: 'service-8',
-    title: 'Taleemi Advice',
-    img: '/bg-10.jpg',
-    description: 'Fast-track help for any academic issue.',
+    id: "service-8",
+    title: "Taleemi Advice",
+    img: "/bg-10.jpg",
+    description: "Fast-track help for any academic issue.",
     icon: Zap,
-    path: '/service/taleemi-advice',
-    category: 'support',
+    path: "/service/taleemi-advice",
+    category: "support",
   },
   {
-    id: 'service-9',
-    title: 'Book Online Session',
-    img: '/bg-11.jpg',
-    description: '1-on-1 counseling with expert advisors.',
+    id: "service-9",
+    title: "Book Online Session",
+    img: "/bg-11.jpg",
+    description: "1-on-1 counseling with expert advisors.",
     icon: MessageCircle,
-    path: '/service/online-session',
-    category: 'support',
+    path: "/service/online-session",
+    category: "support",
   },
   {
-    id: 'service-10',
-    title: 'Taleemi Announcements',
-    img: '/bg-12.jpg',
-    description: 'Latest scholarships, admissions, and opportunities.',
+    id: "service-10",
+    title: "Taleemi Announcements",
+    img: "/bg-12.jpg",
+    description: "Latest scholarships, admissions, and opportunities.",
     icon: Bell,
-    path: '/service/announcement', // align with announcement page
-    category: 'support',
+    path: "/service/announcement", // align with announcement page
+    category: "support",
   },
 ];
 
@@ -152,7 +159,13 @@ const BackgroundPattern = ({ color }) => (
           <circle cx="60" cy="60" r="3" fill={color} opacity="0.1" />
         </pattern>
       </defs>
-      <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)" />
+      <rect
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        fill="url(#pattern-circles)"
+      />
     </svg>
   </div>
 );
@@ -162,25 +175,21 @@ const BackgroundPattern = ({ color }) => (
 // --------------------------------------------------------------------------------------------------
 
 const ServiceHero = ({ onNavigate }) => {
-
   return (
     <section
       className="relative h-[70vh] bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: 'url(/bg-2.jpg)' }}
+      style={{ backgroundImage: "url(/bg-2.jpg)" }}
     >
       {/* DARK GRADIENT OVERLAY */}
       <div
         className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none"
         style={{
-          background: `linear-gradient(to top, ${COLORS.Dark}100, transparent)`
+          background: `linear-gradient(to top, ${COLORS.Dark}100, transparent)`,
         }}
       />
 
-
       <div className="relative overflow-hidden">
-
         <div className="absolute top-0 right-0 group z-40">
-
           <button
             type="button"
             aria-label="More info"
@@ -195,7 +204,6 @@ const ServiceHero = ({ onNavigate }) => {
           >
             <Info className="h-5 w-5 text-white" />
           </button>
-
 
           <div
             className="
@@ -222,41 +230,50 @@ const ServiceHero = ({ onNavigate }) => {
                 group-hover:translate-y-0
                 group-hover:opacity-100
                 group-hover:duration-700     /* SLOW ENTER */
-                rounded-full">
-
+                rounded-full"
+          >
             <div
               className="rounded-full  top-10 
         w-128 h-120  p-4  z-10 bg-transparent"
-            // style={{ 
-            //   background:
-            //     "linear-gradient(135deg, rgba(247, 132, 9, 0.96), rgba(15,23,42,0.96))",
-            // }}
+              // style={{
+              //   background:
+              //     "linear-gradient(135deg, rgba(247, 132, 9, 0.96), rgba(15,23,42,0.96))",
+              // }}
             >
               <div className="text-sm leading-relaxed space-y-3 text-white/85">
                 <p className="font-bold text-2xl text-white -ml-5 ">
-                  TaleemiGuide stands with you at every academic and career decision.
+                  TaleemiGuide stands with you at every academic and career
+                  decision.
                 </p>
-                <p className='font-medium'>
-                  Our services are backed by experienced educators, psychologists,
-                  and certified career coaches — ensuring personalized,
-                  <strong>  accurate, and timely guidance.</strong>
-                </p>
-
-                <p className=" ml-2 -mt-2 font-medium" style={{ color: 'white' }}>
-                  Whether you&apos;re choosing subjects, selecting a university degree,
-                  dealing with academic challenges, planning a career shift, or exploring
-                  <p className='ml-2 font-medium'>national opportunities,&nbsp;
-                    <strong>TaleemiGuide stands with you at every step.</strong></p>
+                <p className="font-medium">
+                  Our services are backed by experienced educators,
+                  psychologists, and certified career coaches — ensuring
+                  personalized,
+                  <strong> accurate, and timely guidance.</strong>
                 </p>
 
-                <p className='ml-7 -mt-2 font-medium'>Our services are backed by the combined expertise of educationists,
-                  senior academicians, industry specialists,</p>
-                <p className='ml-15 -mt-2 font-medium'>
-                  psychologists, and certified
-                  career coaches, ensuring</p>
-                <p className='ml-20 -mt-2 font-medium'>
-                  guidance that is
-                  personalized, accurate, and timely.
+                <p
+                  className=" ml-2 -mt-2 font-medium"
+                  style={{ color: "white" }}
+                >
+                  Whether you&apos;re choosing subjects, selecting a university
+                  degree, dealing with academic challenges, planning a career
+                  shift, or exploring
+                  <p className="ml-2 font-medium">
+                    national opportunities,&nbsp;
+                    <strong>TaleemiGuide stands with you at every step.</strong>
+                  </p>
+                </p>
+
+                <p className="ml-7 -mt-2 font-medium">
+                  Our services are backed by the combined expertise of
+                  educationists, senior academicians, industry specialists,
+                </p>
+                <p className="ml-15 -mt-2 font-medium">
+                  psychologists, and certified career coaches, ensuring
+                </p>
+                <p className="ml-20 -mt-2 font-medium">
+                  guidance that is personalized, accurate, and timely.
                 </p>
 
                 {/* <p className="font-medium ml-30 -mt-2" >
@@ -269,26 +286,16 @@ const ServiceHero = ({ onNavigate }) => {
                   <p className="font-medium ml-10 -mt-2" > opportunities,
                     TaleemiGuide stands with you at every step.</p>
                 </p> */}
-
               </div>
             </div>
           </div>
-
         </div>
 
         <div className="h-180 bg-transparent w-2 " />
-
       </div>
 
-
-
       <div className="absolute inset-x-0 bottom-0 z-10">
-
-
-
-
         <div className="max-w-7xl mx-auto px-6 pb-10">
-
           <p
             className="text-sm font-bold uppercase tracking-widest mb-3"
             style={{ color: COLORS.secondary }}
@@ -301,13 +308,16 @@ const ServiceHero = ({ onNavigate }) => {
           </h1>
 
           <button
-            onClick={() => onNavigate('/service/taleemi-advice')}
+            onClick={() => {
+              const section = document.getElementById("form");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="px-4 py-2.5 mt-6 text-sm font-semibold rounded-xl shadow-2xl
-                     transition duration-300 ease-in-out transform hover:scale-[1.03]
-                     flex items-center gap-2"
+           transition duration-300 ease-in-out transform hover:scale-[1.03]
+           flex items-center gap-2"
             style={{
               backgroundColor: COLORS.secondary,
-              color: 'white',
+              color: "white",
               boxShadow: `0 10px 20px -5px ${COLORS.secondary}50`,
             }}
             onMouseEnter={(e) =>
@@ -319,12 +329,8 @@ const ServiceHero = ({ onNavigate }) => {
           >
             Get Expert Guidance Now <Zap size={18} />
           </button>
-
         </div>
       </div>
-
-
-
 
       {/* <div
               className="text-lg leading-relaxed space-y-4 mb-8"
@@ -344,8 +350,6 @@ const ServiceHero = ({ onNavigate }) => {
                 <strong>personalized, accurate, and timely.</strong>
               </p>
             </div> */}
-
-
 
       {/* RIGHT: Icon Cluster Visual */}
       {/* <div className="lg:w-5/12 w-full flex justify-center lg:justify-end">
@@ -384,7 +388,6 @@ const ServiceHero = ({ onNavigate }) => {
               />
             </div>
           </div>*/}
-
     </section>
   );
 };
@@ -395,9 +398,11 @@ const ServiceHero = ({ onNavigate }) => {
 
 const ServiceCard = ({ service, onNavigate }) => {
   const IconComponent = service.icon;
-  const isSpecial = service.id === 'service-8' || service.id === 'service-9';
+  const isSpecial = service.id === "service-8" || service.id === "service-9";
   const accentColor = isSpecial ? COLORS.secondary : COLORS.primary;
-  const accentColorLight = isSpecial ? COLORS.secondary + '20' : COLORS.primary + '20';
+  const accentColorLight = isSpecial
+    ? COLORS.secondary + "20"
+    : COLORS.primary + "20";
 
   return (
     <div
@@ -411,18 +416,15 @@ const ServiceCard = ({ service, onNavigate }) => {
     flex flex-col
   "
       style={{
-        minHeight: '270px',
+        minHeight: "270px",
         borderColor: accentColorLight,
-        borderWidth: isSpecial ? '3px' : '1px',
+        borderWidth: isSpecial ? "3px" : "1px",
         boxShadow: isSpecial
           ? `0 20px 40px -15px rgba(0,0,0,0.2)`
           : `0 10px 20px -8px rgba(0,0,0,0.08)`,
-        '--tw-ring-color': accentColorLight,
+        "--tw-ring-color": accentColorLight,
       }}
     >
-
-
-
       <div
         className="
       absolute -top-3 -right-3
@@ -434,23 +436,23 @@ const ServiceCard = ({ service, onNavigate }) => {
         style={{
           background: `linear-gradient(295deg, ${COLORS.secondary}, ${accentColorLight})`,
         }}
-
       />
 
       {/* 🔹 Card Content */}
       <div className="relative z-10 flex flex-col h-full">
-
         <div className="mb-4">
-          <img src={service.img}
-            className='relative w-full max-h-34 object-cover 
+          <img
+            src={service.img}
+            className="relative w-full max-h-34 object-cover 
               transition-transform 
-            duration-500 group-hover/image:scale-120 rounded-xl'
-            alt=''
+            duration-500 group-hover/image:scale-120 rounded-xl"
+            alt=""
           />
-          <div className='relative group/image 
+          <div
+            className="relative group/image 
           overflow-hidden
-           rounded-t-3xl'>
-
+           rounded-t-3xl"
+          >
             <div
               className="
           absolute left-1/2 bottom-0 
@@ -461,7 +463,7 @@ const ServiceCard = ({ service, onNavigate }) => {
           duration-500
           group-hover/image:bg-white
         "
-              style={{ backgroundColor: accentColor, color: 'white' }}
+              style={{ backgroundColor: accentColor, color: "white" }}
             >
               <IconComponent size={28} />
             </div>
@@ -485,10 +487,9 @@ const ServiceCard = ({ service, onNavigate }) => {
         "
             style={{ color: COLORS.textGray }}
           >
-            {FILTERS.find((f) => f.id === service.category)?.label || 'Service'}
+            {FILTERS.find((f) => f.id === service.category)?.label || "Service"}
           </p>
         </div>
-
 
         <div className="flex-grow">
           <p
@@ -517,10 +518,8 @@ const ServiceCard = ({ service, onNavigate }) => {
             className="ml-1 mt-0.5 transition-transform duration-300 group-hover:translate-x-1"
           />
         </div>
-
       </div>
     </div>
-
   );
 };
 
@@ -536,10 +535,11 @@ const CoreServicesSection = ({
   setSearchTerm,
 }) => {
   const filteredServices = serviceData.filter((service) => {
-    const matchesFilter = activeFilter === 'all' || service.category === activeFilter;
+    const matchesFilter =
+      activeFilter === "all" || service.category === activeFilter;
     const q = searchTerm.trim().toLowerCase();
     const matchesSearch =
-      q === '' ||
+      q === "" ||
       service.title.toLowerCase().includes(q) ||
       service.description.toLowerCase().includes(q);
     return matchesFilter && matchesSearch;
@@ -557,14 +557,14 @@ const CoreServicesSection = ({
           className="text-3xl md:text-5xl font-extrabold mb-4 text-center"
           style={{ color: COLORS.primary }}
         >
-          Our Core Guidance Services
+          Explore TaleemiGuide Services
         </h3>
         <p
           className="text-center max-w-4xl mx-auto text-xl mb-8 leading-relaxed font-medium"
           style={{ color: COLORS.textGray }}
         >
-          These ten services are designed to support you at every critical junction of your
-          academic and professional journey.
+          Choose your stage and discover the guidance designed for your academic
+          journey.
         </p>
 
         {/* Filters + Search */}
@@ -574,16 +574,18 @@ const CoreServicesSection = ({
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold border transition ${activeFilter === filter.id
-                  ? 'shadow-md'
-                  : 'hover:bg-white hover:shadow-lg'
-                  }`}
+                className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold border transition ${
+                  activeFilter === filter.id
+                    ? "shadow-md"
+                    : "hover:bg-white hover:shadow-lg"
+                }`}
                 style={{
-                  borderColor: activeFilter === filter.id ? COLORS.secondary : '#E5E7EB',
+                  borderColor:
+                    activeFilter === filter.id ? COLORS.secondary : "#E5E7EB",
                   backgroundColor:
-                    activeFilter === filter.id ? COLORS.secondary : 'white',
+                    activeFilter === filter.id ? COLORS.secondary : "white",
                   color:
-                    activeFilter === filter.id ? 'white' : COLORS.primaryDark,
+                    activeFilter === filter.id ? "white" : COLORS.primaryDark,
                 }}
               >
                 {filter.label}
@@ -595,7 +597,7 @@ const CoreServicesSection = ({
             <Search
               size={18}
               className="absolute left-3 top-1/2 -translate-y-1/2"
-              style={{ color: '#9CA3AF' }}
+              style={{ color: "#9CA3AF" }}
             />
             <input
               type="text"
@@ -604,9 +606,9 @@ const CoreServicesSection = ({
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-9 pr-3 py-2 rounded-full border  text-sm  focus:ring-1"
               style={{
-                borderColor: '#00000025',
+                borderColor: "#00000025",
                 color: COLORS.primaryDark,
-                '--tw-ring-color': COLORS.primary,
+                "--tw-ring-color": COLORS.primary,
               }}
             />
           </div>
@@ -615,10 +617,17 @@ const CoreServicesSection = ({
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredServices.map((service) => (
-            <ServiceCard key={service.id} service={service} onNavigate={onNavigate} />
+            <ServiceCard
+              key={service.id}
+              service={service}
+              onNavigate={onNavigate}
+            />
           ))}
           {filteredServices.length === 0 && (
-            <div className="col-span-full text-center text-sm" style={{ color: COLORS.textGray }}>
+            <div
+              className="col-span-full text-center text-sm"
+              style={{ color: COLORS.textGray }}
+            >
               No services match your search. Try a different keyword or filter.
             </div>
           )}
@@ -632,31 +641,37 @@ const CoreServicesSection = ({
 // 4. Taleemi Advice Section + Form
 // --------------------------------------------------------------------------------------------------
 
-const TaleemiAdviceForm = () => {
-  const [fileName, setFileName] = useState('No file chosen');
+const TaleemiAdviceForm = ({ selectedCategory }) => {
+  const [fileName, setFileName] = useState("No file chosen");
+  const [category, setCategory] = useState(selectedCategory || "");
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setFileName(`${e.target.files.length} file(s) selected`);
     } else {
-      setFileName('No file chosen');
+      setFileName("No file chosen");
     }
   };
 
+  // useEffect(() => {
+  //   if (selectedCategory) {
+  //     setCategory(selectedCategory);
+  //   }
+  // }, [selectedCategory]);
 
   return (
-    <section className="relative w-full min-h-2xl py-16 px-6"
+    <section
+      id="form"
+      className="relative w-full min-h-2xl py-16 px-6"
       style={{
-
-        backgroundImage: 'url(/image.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
-
+        backgroundImage: "url(/image.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="absolute inset-0 bg-[#0B1C3C]/80 w-full h-full" />
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
-
         {/* LEFT IMAGE PANEL */}
 
         <div
@@ -672,7 +687,10 @@ const TaleemiAdviceForm = () => {
           <div className="relative z-10 text-white">
             <span
               className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide"
-              style={{ background: "rgba(249,115,22,0.18)", border: "1px solid rgba(249,115,22,0.35)" }}
+              style={{
+                background: "rgba(249,115,22,0.18)",
+                border: "1px solid rgba(249,115,22,0.35)",
+              }}
             >
               TaleemiGuide • Quick Help
             </span>
@@ -693,29 +711,35 @@ const TaleemiAdviceForm = () => {
               </div>
             </div>
 
-
             <p className="mt-3 text-sm text-slate-200 max-w-sm">
               Share your situation and get personalized guidance from
               TaleemiGuide experts.
             </p>
-
           </div>
         </div>
 
         {/* FORM PANEL */}
         <div className="bg-white p-8 md:p-12">
-          <h3 className="text-3xl font-bold mb-6" style={{ color: COLORS.primary }}>
+          <h3
+            className="text-3xl font-bold mb-6"
+            style={{ color: COLORS.primary }}
+          >
             Request for Academic Guidance
           </h3>
 
           <form className="space-y-5">
-
             {/* Inputs */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {["Name", "Email", "Phone"].map((item) => (
                 <input
                   key={item}
-                  type={item === "Email" ? "email" : item === "Phone" ? "tel" : "text"}
+                  type={
+                    item === "Email"
+                      ? "email"
+                      : item === "Phone"
+                      ? "tel"
+                      : "text"
+                  }
                   placeholder={item}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:outline-none"
                 />
@@ -723,14 +747,18 @@ const TaleemiAdviceForm = () => {
             </div>
 
             {/* Category */}
-            <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:outline-none">
-              <option disabled selected >
+            <select
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:outline-none"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="" disabled >
                 Select your category
               </option>
-              <option>Class 10–12</option>
-              <option>Undergraduate</option>
-              <option>Graduate</option>
-              <option>Working Professional</option>
+              <option value="class_10">Class 10</option>
+              <option value="class_12">Class 12</option>
+              <option value="university">University Graduate</option>
+              <option value="working_pro">Working Professional</option>
             </select>
 
             {/* Query */}
@@ -767,7 +795,8 @@ const TaleemiAdviceForm = () => {
               Submit
             </button>
             <p className="text-xs text-gray-400 pt-1">
-              By submitting, you agree to be contacted by TaleemiGuide for guidance purposes.
+              By submitting, you agree to be contacted by TaleemiGuide for
+              guidance purposes.
             </p>
           </form>
         </div>
@@ -795,7 +824,6 @@ const TaleemiAdviceSection = () => {
       title: "University Students",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-
     },
     {
       icon: <FaComputer className="text-orange-600 text-7xl mb-4" />,
@@ -814,9 +842,8 @@ const TaleemiAdviceSection = () => {
   return (
     <section
       className="relative w-full pt-6 pb-8 px-4 items-center"
-      style={{ background: 'white' }}
+      style={{ background: "white" }}
     >
-
       <div className="max-w-8xl mx-auto space-y-3">
         <div className="text-center space-y-3">
           <div className="relative z-20 text-center space-y-3 mb-30">
@@ -824,19 +851,18 @@ const TaleemiAdviceSection = () => {
               className="text-3xl md:text-4xl lg:text-5xl font-extrabold mt-2"
               style={{ color: COLORS.primary }}
             >
-              Expert Academic Help<br />
+              Expert Academic Help
+              <br />
               Whenever You Need It
             </h2>
-            <p className="font-medium text-xl" >
+            <p className="font-medium text-xl">
               Don&apos;t let academic or career challenges hold you back.
             </p>
             <p className="text-s mb-12" style={{ color: COLORS.primaryDark }}>
-              TaleemiGuide provides reliable, personalized guidance to help you move forward with clarity.
+              TaleemiGuide provides reliable, personalized guidance to help you
+              move forward with clarity.
             </p>
           </div>
-
-
-
 
           <div
             className="text-center max-w-8xl mx-auto text-lg leading-relaxed space-y-0"
@@ -850,7 +876,6 @@ const TaleemiAdviceSection = () => {
     grid md:grid-cols-4 auto-rows-fr gap-6
   "
             >
-
               {Feature.map((feature, idx) => {
                 const hasBgImage = idx % 2 === 1; // 1010 pattern
                 const bgImageUrl =
@@ -868,19 +893,17 @@ const TaleemiAdviceSection = () => {
                     style={
                       hasBgImage
                         ? {
-                          backgroundImage: `url(${bgImageUrl})`,
-                          backgroundSize: "120% auto",
-                          backgroundPosition: "center center",
-                          // ✅ feels closer
-                        }
+                            backgroundImage: `url(${bgImageUrl})`,
+                            backgroundSize: "120% auto",
+                            backgroundPosition: "center center",
+                            // ✅ feels closer
+                          }
                         : {}
                     }
                   >
-
                     {hasBgImage && (
                       <div className="absolute inset-0 bg-[#0B1C3C]/80 w-full h-full" />
                     )}
-
 
                     <div className="relative z-10 flex flex-col items-center justify-center gap-3">
                       {feature.icon}
@@ -906,76 +929,183 @@ const TaleemiAdviceSection = () => {
 const SubmissionSection = () => {
   const steps = [
     {
-      title: 'Start Online Submission',
-      desc: 'Begin your application by filling out the online submission form with accurate academic and personal details.',
+      title: "Start Online Submission",
+      desc: "Submit Your Question / Concern and upload documents if needed.",
     },
     {
-      title: 'Submit The Form',
-      desc: 'Carefully review your information and submit the completed form for evaluation.',
+      title: "Expert Review",
+      desc: "Our Experts will carefully review your concerns.",
     },
     {
-      title: 'Review The Submission',
-      desc: 'Our team reviews your submission to ensure completeness and relevance.',
+      title: "Receive Guidance",
+      desc: "A tailored guidance for your concern will be provided.",
     },
     {
-      title: 'Gather Necessary Documents',
-      desc: 'Prepare and upload any required academic or supporting documents.',
+      title: "Book a Session (Optional)",
+      desc: "Discuss your situation with an expert if deeper help is needed.",
     },
-    {
-      title: 'Interviewing Process',
-      desc: 'If required, you may be contacted for an online discussion or clarification.',
-    },
-    {
-      title: 'Last Decision',
-      desc: 'Receive expert guidance and a clear next-step recommendation.',
-    },
-  ]
+  ];
   return (
     <section
       className="relative py-16 overflow-hidden"
-      style={{ background: COLORS.lightBackground }}>
+      style={{ background: COLORS.lightBackground }}
+    >
       <BackgroundPattern color={COLORS.primary} />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className='font-bold text-4xl text-start -mt-5 text-[#0B1C3C] '>
+        <h3 className="font-bold text-4xl text-start -mt-5 text-[#0B1C3C] ">
           The Application Process
         </h3>
-        <div className=' grid grid-cols-1 md:grid-cols-3 gap-y-16 gap-x-20 mt-20'>
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-20 mt-20">
           {steps.map((step, index) => (
-            <div key={index} className='flex items-center gap-6'>
-              <div className='font-bold text-orange-600 text-5xl mb-12'>
+            <div key={index} className="flex items-center gap-6">
+              <div className="font-bold text-orange-600 text-5xl mb-12">
                 {index + 1}
               </div>
-              <div className='gap-y-16' >
-                <h3 className='text-xl font-semibold text-black md-3'>
+              <div className="gap-y-16">
+                <h3 className="text-xl font-semibold text-black md-3">
                   {step.title}
                 </h3>
-                <p className='text-sm leading-relaxed text-gray-600 h-16'>
+                <p className="text-sm leading-relaxed text-gray-600 h-16">
                   {step.desc}
                 </p>
               </div>
             </div>
-
           ))}
         </div>
-        <div className='mt-40'>
-          <div className='h-1 w-full rounded-full' style={{ backgroundColor: '#ff6600ff' }} />
+        <div className="mt-40">
+          <div
+            className="h-1 w-full rounded-full"
+            style={{ backgroundColor: "#ff6600ff" }}
+          />
         </div>
       </div>
-
     </section>
-
   );
 };
 
+// --------------------------------------------------------------------------------------------------
+// 6. Trust Section
+// --------------------------------------------------------------------------------------------------
+const TrustSection = () => {
+  return (
+    <section
+      className="relative py-16 overflow-hidden"
+      style={{ background: COLORS.lightBackground }}
+    >
+      <BackgroundPattern color={COLORS.primary} />
 
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="text-center max-w-4xl mx-auto">
+          <h3
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold"
+            style={{ color: COLORS.primary }}
+          >
+            Why Students Trust TaleemiGuide
+          </h3>
 
+          <p
+            className="mt-3 text-lg font-medium"
+            style={{ color: COLORS.textGray }}
+          >
+            Helping students make confident academic decisions
+          </p>
+        </div>
+
+        {/* Content */}
+        <div className="mt-14 grid md:grid-cols-2 gap-10">
+          {/* LEFT CARD */}
+          <div
+            className="p-8 rounded-3xl bg-white border shadow-xl"
+            style={{ borderColor: COLORS.primary + "15" }}
+          >
+            <h4
+              className="text-xl font-bold mb-6"
+              style={{ color: COLORS.primaryDark }}
+            >
+              Why Students Trust Us
+            </h4>
+
+            <ul className="space-y-4">
+              {[
+                "Strong Knowledge Base",
+                "Expert Guidance",
+                "Reliable Information",
+                "Practical Solutions",
+                "Support Across Pakistan",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span
+                    className="mt-1 text-sm font-bold"
+                    style={{ color: COLORS.secondary }}
+                  >
+                    ✔
+                  </span>
+                  <span
+                    className="text-base font-medium"
+                    style={{ color: COLORS.textGray }}
+                  >
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* RIGHT CARD */}
+          <div
+            className="p-8 rounded-3xl bg-white border shadow-xl"
+            style={{ borderColor: COLORS.secondary + "20" }}
+          >
+            <h4
+              className="text-xl font-bold mb-6"
+              style={{ color: COLORS.primaryDark }}
+            >
+              What Makes TaleemiGuide Different
+            </h4>
+
+            <ul className="space-y-4">
+              {[
+                "🎯 Career Assessment & Personality Insights",
+                "🎓 1000+ Subjects Classified",
+                "📚 Pathways Explained: Class 10 & 12",
+                "🏫 Mapped Programs of 250+ Universities",
+                "💡 Practical Solutions for Academic Challenges",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span
+                    className="text-base font-medium"
+                    style={{ color: COLORS.textGray }}
+                  >
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Divider */}
+        <div className="mt-16">
+          <div
+            className="h-1 w-full rounded-full"
+            style={{ backgroundColor: COLORS.secondary }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // --------------------------------------------------------------------------------------------------
-// 6. Online Session Section
+// 7. Online Session Section
 // --------------------------------------------------------------------------------------------------
 
 const OnlineSessionSection = ({ onNavigate }) => (
-  <section className="py-12 md:py-12" style={{ background: COLORS.lightBackground }}>
+  <section
+    className="py-12 md:py-12"
+    style={{ background: COLORS.lightBackground }}
+  >
     <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Outer Shell */}
       <div className="relative overflow-hidden rounded-3xl border border-white/40 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.10)]">
@@ -1017,10 +1147,14 @@ const OnlineSessionSection = ({ onNavigate }) => (
               Your Future, Our Guidance — detailed one-on-one counseling.
             </p>
 
-            <p className="mt-5 leading-relaxed text-base md:text-xm" style={{ color: COLORS.textGray }}>
-              The right advice at the right time can transform your academic or professional journey.
-              Our experienced counselors help you overcome complex challenges, refine goals, and build
-              a strong, realistic plan for success.
+            <p
+              className="mt-5 leading-relaxed text-base md:text-xm"
+              style={{ color: COLORS.textGray }}
+            >
+              The right advice at the right time can transform your academic or
+              professional journey. Our experienced counselors help you overcome
+              complex challenges, refine goals, and build a strong, realistic
+              plan for success.
             </p>
 
             {/* Benefit Grid */}
@@ -1049,10 +1183,12 @@ const OnlineSessionSection = ({ onNavigate }) => (
                   </div>
 
                   <div>
-                    <p className="text-base font-bold" style={{ color: COLORS.primaryDark }}>
+                    <p
+                      className="text-base font-bold"
+                      style={{ color: COLORS.primaryDark }}
+                    >
                       {item}
                     </p>
-
                   </div>
                 </div>
               ))}
@@ -1066,14 +1202,27 @@ const OnlineSessionSection = ({ onNavigate }) => (
                 background: `${COLORS.secondary}15`,
               }}
             >
-              <span className="text-sm font-semibold" style={{ color: COLORS.primaryDark }}>
+              <span
+                className="text-sm font-semibold"
+                style={{ color: COLORS.primaryDark }}
+              >
                 Available on:
               </span>
-              <span className="text-sm" style={{ color: COLORS.textGray }}>Zoom</span>
-              <span className="text-sm" style={{ color: COLORS.textGray }}>•</span>
-              <span className="text-sm" style={{ color: COLORS.textGray }}>Google Meet</span>
-              <span className="text-sm" style={{ color: COLORS.textGray }}>•</span>
-              <span className="text-sm" style={{ color: COLORS.textGray }}>Call</span>
+              <span className="text-sm" style={{ color: COLORS.textGray }}>
+                Zoom
+              </span>
+              <span className="text-sm" style={{ color: COLORS.textGray }}>
+                •
+              </span>
+              <span className="text-sm" style={{ color: COLORS.textGray }}>
+                Google Meet
+              </span>
+              <span className="text-sm" style={{ color: COLORS.textGray }}>
+                •
+              </span>
+              <span className="text-sm" style={{ color: COLORS.textGray }}>
+                Call
+              </span>
             </div>
           </div>
 
@@ -1095,14 +1244,23 @@ const OnlineSessionSection = ({ onNavigate }) => (
                     border: `1px solid ${COLORS.secondary}25`,
                   }}
                 >
-                  <MessageCircle size={40} style={{ color: COLORS.secondary }} />
+                  <MessageCircle
+                    size={40}
+                    style={{ color: COLORS.secondary }}
+                  />
                 </div>
 
                 <div>
-                  <p className="text-lg font-semibold" style={{ color: COLORS.textGray }}>
+                  <p
+                    className="text-lg font-semibold"
+                    style={{ color: COLORS.textGray }}
+                  >
                     Quick Booking
                   </p>
-                  <p className="text-2xl font-extrabold" style={{ color: COLORS.primaryDark }}>
+                  <p
+                    className="text-2xl font-extrabold"
+                    style={{ color: COLORS.primaryDark }}
+                  >
                     Ready to take the next step?
                   </p>
                 </div>
@@ -1120,7 +1278,10 @@ const OnlineSessionSection = ({ onNavigate }) => (
                       className="mt-4 h-3 w-3 rounded-full"
                       style={{ background: COLORS.secondary }}
                     />
-                    <p className="mt-3 text-sm md:text-base" style={{ color: COLORS.textGray }}>
+                    <p
+                      className="mt-3 text-sm md:text-base"
+                      style={{ color: COLORS.textGray }}
+                    >
                       {t}
                     </p>
                   </div>
@@ -1136,15 +1297,23 @@ const OnlineSessionSection = ({ onNavigate }) => (
                   color: "white",
                   boxShadow: `0 14px 30px ${COLORS.secondary}35`,
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = COLORS.primary)}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = COLORS.secondary)}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = COLORS.primary)
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = COLORS.secondary)
+                }
               >
                 Schedule your session now
               </button>
 
               {/* Small note */}
-              <p className="mt-4 text-xs md:text-sm" style={{ color: COLORS.textGray }}>
-                You’ll receive confirmation details and instructions after booking.
+              <p
+                className="mt-4 text-xs md:text-sm"
+                style={{ color: COLORS.textGray }}
+              >
+                You’ll receive confirmation details and instructions after
+                booking.
               </p>
             </div>
           </div>
@@ -1152,7 +1321,6 @@ const OnlineSessionSection = ({ onNavigate }) => (
       </div>
     </div>
   </section>
-
 );
 
 // --------------------------------------------------------------------------------------------------
@@ -1160,13 +1328,30 @@ const OnlineSessionSection = ({ onNavigate }) => (
 // --------------------------------------------------------------------------------------------------
 
 export default function ServicePage({
-  onNavigate = (path) => console.log('Navigating to:', path),
+  onNavigate = (path) => console.log("Navigating to:", path),
 }) {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo === "form") {
+      const interval = setInterval(() => {
+        const section = document.getElementById("form");
+
+        if(section) {
+          section.scrollIntoView({ behavior: "smooth"});
+          clearInterval(interval);
+        }
+      }, 100);
+      
+      return () => clearInterval(interval);
+    }
+  }, [location]); 
 
   return (
-    <div style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ fontFamily: "Inter, sans-serif" }}>
       <ServiceHero onNavigate={onNavigate} />
       <CoreServicesSection
         onNavigate={onNavigate}
@@ -1179,8 +1364,8 @@ export default function ServicePage({
       <TaleemiAdviceSection />
       <OnlineSessionSection onNavigate={onNavigate} />
       <SubmissionSection onNavigate={onNavigate} />
-      <TaleemiAdviceForm />
-
+      <TrustSection />
+      <TaleemiAdviceForm selectedCategory={location.state?.category} />
     </div>
   );
 }

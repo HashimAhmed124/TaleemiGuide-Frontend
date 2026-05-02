@@ -4,7 +4,6 @@ import { ArrowRight, ClipboardList, Brain, FileText } from "lucide-react";
 import ServiceLayout from "../../components/ServiceLayout";
 const careerHero = "/bg-5.jpg";
 
-
 // --- BRAND COLORS ----------------------------------------------------
 const COLORS = {
   primary: "#1E3A8A",
@@ -17,13 +16,11 @@ const COLORS = {
   borderSoft: "#E5E7EB",
 };
 
-
 // --------------------------------------------------------------------
 // 1) HERO SECTION
 // --------------------------------------------------------------------
 const HeroSection = ({ onOpenRoadmap }) => (
   <section className="relative bg-gradient-to-br from-blue-50 via-white to-white">
-
     {/* Full width small-height image */}
     <div className="w-full h-[220px] md:h-[280px] lg:h-[320px] overflow-hidden">
       <img
@@ -35,53 +32,65 @@ const HeroSection = ({ onOpenRoadmap }) => (
 
     {/* Content */}
     <div className="max-w-5xl mx-auto px-6 py-8 text-center">
-
-      <span className="inline-block mb-4 px-4 py-1 
+      <span
+        className="inline-block mb-4 px-4 py-1 
           text-sm font-semibold 
           tracking-wide text-orange-600 bg-orange-100
-           rounded-full text-start">
+           rounded-full text-start"
+      >
         Know Yourself Before Choosing a Degree.
       </span>
 
-      <h1 className="text-5xl md:text-5xl font-extrabold 
-          leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
+      <h1
+        className="text-5xl md:text-5xl font-extrabold 
+          leading-tight mb-6"
+        style={{ color: COLORS.primaryDark }}
+      >
         Discover the Career That Truly Fits You
       </h1>
 
       <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
-        In today’s world of thousands of colleges, hundreds of universities and thousands of programs, along with rapidly emerging fields, choosing the right specialization is one of the hardest decisions students and parents face. <br />
-        <span className="font-bold">The good news? TaleemiGuide has made it easier, clearer, and scientific.</span> <br />
-        Our Career Assessment Test is based on internationally recognized models, validated methodologies, and years of experience in psychology, counseling, and academic advising. The test helps you understand who you are, what career paths match your personality, interests, values, and strengths, and which academic direction fits your future. <br />
-        Whether you are a Matric student choosing a stream, an intermediate student selecting a BS degree, a university student reconsidering your field, or a professional exploring career transitions — this test gives you the clarity you need.
+        In today’s world of thousands of colleges, hundreds of universities and
+        thousands of programs, along with rapidly emerging fields, choosing the
+        right specialization is one of the hardest decisions students and
+        parents face. <br />
+        <span className="font-bold">
+          The good news? TaleemiGuide has made it easier, clearer, and
+          scientific.
+        </span>{" "}
+        <br />
+        Our Career Assessment Test is based on internationally recognized
+        models, validated methodologies, and years of experience in psychology,
+        counseling, and academic advising. The test helps you understand who you
+        are, what career paths match your personality, interests, values, and
+        strengths, and which academic direction fits your future. <br />
+        Whether you are a Matric student choosing a stream, an intermediate
+        student selecting a BS degree, a university student reconsidering your
+        field, or a professional exploring career transitions — this test gives
+        you the clarity you need.
       </p>
-      <div className="flex flex-wrap justify-center gap-4">
-      </div>
+      <div className="flex flex-wrap justify-center gap-4"></div>
 
       <NavLink
-            to="#"
-            className="inline-flex items-center gap-3 px-7 py-3 text-base sm:text-sm font-semibold rounded-xl transition-all duration-300"
-            style={{
-              background:
-                "linear-gradient(135deg, #f68003ff 0%, #f75307ff 100%)",
-              color: "white",
-              boxShadow:
-                "0 12px 25px rgba(253, 153, 2, 0.45)",
-            }}
-          >
-            Click Here to Start
-          </NavLink>
+        to="#"
+        className="inline-flex items-center gap-3 px-7 py-3 text-base sm:text-sm font-semibold rounded-xl transition-all duration-300"
+        style={{
+          background: "linear-gradient(135deg, #f68003ff 0%, #f75307ff 100%)",
+          color: "white",
+          boxShadow: "0 12px 25px rgba(253, 153, 2, 0.45)",
+        }}
+      >
+        Click Here to Start
+      </NavLink>
     </div>
-  </section >
+  </section>
 );
-;
-
 // --------------------------------------------------------------------
 // 2) WHY TAKE TALEEMIGUIDE’S CAREER ASSESSMENT TEST?
 // --------------------------------------------------------------------
 const WhyTakeSection = () => (
   <section className="py-14 bg-slate-50">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
       {/* Title */}
       <div className="mb-6 ">
         <h2
@@ -105,7 +114,6 @@ const WhyTakeSection = () => (
 
       {/* CONTENT CARDS */}
       <div className="space-y-6">
-
         {/* Card 1 */}
         <div className="bg-white rounded-2xl p-6 sm:p-7 shadow-md hover:shadow-lg transition">
           <h3
@@ -119,8 +127,8 @@ const WhyTakeSection = () => (
             className="text-sm sm:text-base leading-relaxed"
             style={{ color: COLORS.textGray }}
           >
-            Understand your personality type, work preferences, motivations,
-            and natural strengths — and match them with real career options.
+            Understand your personality type, work preferences, motivations, and
+            natural strengths — and match them with real career options.
           </p>
         </div>
 
@@ -193,13 +201,10 @@ const WhyTakeSection = () => (
             Post-Graduation and early-career professionals.
           </p>
         </div>
-
       </div>
     </div>
   </section>
-
 );
-
 
 // --------------------------------------------------------------------
 // 3) HOW IT WORKS SECTION
@@ -207,7 +212,6 @@ const WhyTakeSection = () => (
 const HowItWorksSection = () => (
   <section className="py-10 bg-slate-50">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
       {/* Section Heading */}
       <div className="mb-12 ">
         <h2
@@ -239,7 +243,6 @@ const HowItWorksSection = () => (
         />
 
         <div className="space-y-8">
-
           {/* STEP CARD */}
           {[
             {
@@ -266,18 +269,15 @@ const HowItWorksSection = () => (
             {
               step: 3,
               title: "Receive Your Report",
-              text:
-                "Your personalized career report will be available on your dashboard within 24 hours.",
+              text: "Your personalized career report will be available on your dashboard within 24 hours.",
             },
             {
               step: 4,
               title: "Discuss Your Results (Optional)",
-              text:
-                "If you want deeper insight, book an online session with our expert counselors who will walk you through your results and guide your next steps.",
+              text: "If you want deeper insight, book an online session with our expert counselors who will walk you through your results and guide your next steps.",
             },
           ].map((item, i) => (
             <div key={i} className="relative flex gap-5 sm:gap-6">
-
               {/* Step Number */}
               <div className="flex flex-col items-center flex-none">
                 <div
@@ -316,9 +316,25 @@ const HowItWorksSection = () => (
               </div>
             </div>
           ))}
-
         </div>
       </div>
+
+      <div class="w-full py-6 md:py-10 flex justify-center">
+  <div class="w-full max-w-5xl px-4 mx-auto flex justify-center">
+    <NavLink
+      to="#"
+      className="flex items-center gap-3 px-7 py-3 text-base sm:text-sm font-semibold rounded-xl transition-all duration-300"
+      style={{
+        background:
+          "linear-gradient(135deg, #f68003ff 0%, #f75307ff 100%)",
+        color: "white",
+        boxShadow: "0 12px 25px rgba(253, 153, 2, 0.45)",
+      }}
+    >
+      Click Here to Start
+    </NavLink>
+  </div>
+</div>
 
       {/* CTA */}
       <div className="rounded-3xl px-8 py-8 text-center bg-white shadow-xl">
@@ -332,12 +348,9 @@ const HowItWorksSection = () => (
           and choose your future with confidence.
         </p>
       </div>
-
     </div>
   </section>
 );
-
-
 
 // --------------------------------------------------------------------
 // 4) NEXT STEP IN THE JOURNEY
@@ -352,8 +365,7 @@ const NextStepSection = () => (
           background:
             "linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 60%, #FFFFFF 100%)",
           border: "1px solid rgba(30,58,138,0.08)",
-          boxShadow:
-            "0 20px 45px rgba(15,23,42,0.12)",
+          boxShadow: "0 20px 45px rgba(15,23,42,0.12)",
         }}
       >
         {/* Accent Bar */}
@@ -389,8 +401,6 @@ const NextStepSection = () => (
             our Subject Classification system.
           </p>
 
-          
-
           <NavLink
             to="/service/subject-classification"
             className="inline-flex items-center gap-3 px-7 py-3 text-base sm:text-sm font-semibold rounded-xl transition-all duration-300"
@@ -398,8 +408,7 @@ const NextStepSection = () => (
               background:
                 "linear-gradient(135deg, #f68003ff 0%, #f75307ff 100%)",
               color: "white",
-              boxShadow:
-                "0 12px 25px rgba(253, 153, 2, 0.45)",
+              boxShadow: "0 12px 25px rgba(253, 153, 2, 0.45)",
             }}
           >
             Explore Subject Classification
@@ -409,7 +418,6 @@ const NextStepSection = () => (
       </div>
     </div>
   </section>
-
 );
 // --------------------------------------------------------------------
 // MAIN PAGE COMPONENT

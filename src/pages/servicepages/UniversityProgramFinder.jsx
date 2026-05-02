@@ -439,13 +439,12 @@ const IntegrationSection = () => (
           style={{ color: COLORS.textGray }}
         >
           Find your perfect degree from Pakistan’s largest verified database of
-          university programs.Find your perfect degree from Pakistan’s largest
-          verified database of university programs.
+          university programs.
         </p>
 
         <NavLink
           // TODO: need to update it to actual page when completed
-          to="/program-finder"
+          to="/spreadsheet"
           className="inline-flex items-center justify-center mt-3 px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold rounded-xl shadow-md transition-transform duration-200 hover:scale-[1.03]"
           style={{
             backgroundColor: COLORS.secondary,

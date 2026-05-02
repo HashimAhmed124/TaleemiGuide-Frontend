@@ -51,7 +51,7 @@ const HeroSection = ({ onOpenRoadmap }) => {
 
         <h1 className="text-5xl md:text-5xl font-extrabold 
         leading-tight mb-6" style={{ color: COLORS.primaryDark }}>
-          University Program Finder
+          University Graduate Guidance
         </h1>
 
         <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
@@ -505,6 +505,10 @@ const TaleemiAdviceFormSection = ({ sectionRef }) => {
             </p>
             <NavLink
               to="/service"
+              state={{
+                scrollTo: "form",
+                category: "university"
+              }}
               className="mt-auto px-4 py-2 rounded-lg text-sm font-medium text-center"
               style={{ backgroundColor: COLORS.secondary, color: "white" }}
             >

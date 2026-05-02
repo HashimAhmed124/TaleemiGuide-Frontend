@@ -368,6 +368,10 @@ const TaleemiAdviceFormSection = ({ sectionRef }) => {
 
             <NavLink
               to="/service"
+              state={{
+                scrollTo: "form",
+                category: "class_10",
+              }}
               className="inline-block mt-2 px-4 py-2 rounded-lg text-sm font-medium text-center"
               style={{ backgroundColor: COLORS.secondary, color: "white" }}
             >

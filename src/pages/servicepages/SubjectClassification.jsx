@@ -43,11 +43,11 @@ const HeroSection = ({ onOpenRoadmap }) => {
         </span>
 
         <h1
-          className="text-5xl md:text-5xl font-extrabold 
+          className="text-4xl md:text-4xl font-extrabold 
         leading-tight mb-6"
           style={{ color: COLORS.primaryDark }}
         >
-          Choosing The Right Field For Your Subject
+          Understand Every Field Before Choosing Your Direction
         </h1>
 
         <p className="text-xm text-gray-600 max-w-3xl mx-auto mb-10">
