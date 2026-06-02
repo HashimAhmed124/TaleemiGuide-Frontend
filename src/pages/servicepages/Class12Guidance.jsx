@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import ServiceLayout from "../../components/ServiceLayout";
 const class12Hero = "/bg-4.jpg";
-import class12Roadmap from "../../assets/service-images/12-grade.png";
+import class12Roadmap from "../../assets/service-images/roadmap12.png";
 // --- BRAND COLORS ----------------------------------------------------
 const COLORS = {
   primary: "#1E3A8A",
@@ -395,21 +395,22 @@ const RoadmapModal = ({ open, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4"
       onClick={handleBackdropClick}
     >
-      <div className="relative bg-white rounded-2xl max-w-4xl w-full mx-4 overflow-hidden shadow-2xl">
+      <div className="relative bg-white rounded-2xl max-w-4xl w-full shadow-2xl flex flex-col"
+        style={{ maxHeight: '90vh' }}>
+
         {/* Header */}
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-gray-200 bg-slate-50">
+        <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-gray-200 bg-slate-50 rounded-t-2xl flex-shrink-0">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              Class 10 Roadmap
+              Class 12 Roadmap
             </p>
             <p className="text-sm sm:text-base font-semibold text-slate-900">
-              Complete academic and career roadmap after Matric
+              Complete academic and career roadmap after Intermediate
             </p>
           </div>
-
           <button
             type="button"
             onClick={onClose}
@@ -419,19 +420,19 @@ const RoadmapModal = ({ open, onClose }) => {
           </button>
         </div>
 
-        {/* Image area */}
-        <div className="bg-black flex items-center justify-center max-h-[75vh]">
+        {/* Image */}
+        <div className="overflow-y-auto flex-1 rounded-b-2xl bg-black">
           <img
             src={class12Roadmap}
-            alt="Class 10 academic and career roadmap"
-            className="w-full h-full object-contain"
+            alt="Class 12 academic and career roadmap"
+            className="w-full h-auto block"
           />
         </div>
+
       </div>
     </div>
   );
 };
-
 /* ------------------------------------------------------------------ */
 /* MAIN COMPONENT */
 /* ------------------------------------------------------------------ */
@@ -440,22 +441,21 @@ export default function Class12Guidance() {
   const adviceRef = useRef(null);
 
   return (
-    <ServiceLayout>
-      <HeroSection onOpenRoadmap={() => setRoadmapOpen(true)} />
-      <HowTaleemiGuideHelpsSection />
-      <TakingRightDecisionSection
-        onSeekAdviceClick={() =>
-          adviceRef.current?.scrollIntoView({ behavior: "smooth" })
-        }
-      />
+    <>
+      <ServiceLayout>
+        <HeroSection onOpenRoadmap={() => setRoadmapOpen(true)} />
+        <HowTaleemiGuideHelpsSection />
+        <TakingRightDecisionSection
+          onSeekAdviceClick={() =>
+            adviceRef.current?.scrollIntoView({ behavior: "smooth" })
+          }
+        />
+        <TaleemiAdviceFormSection sectionRef={adviceRef} />
+        <NextStepSection />
+      </ServiceLayout>
 
-      <RoadmapModal
-        open={roadmapOpen}
-        onClose={() => setRoadmapOpen(false)}
-      />
-      <TaleemiAdviceFormSection sectionRef={adviceRef} />
-      <NextStepSection />
+      {/* Outside ServiceLayout so fixed positioning works correctly */}
       <RoadmapModal open={roadmapOpen} onClose={() => setRoadmapOpen(false)} />
-    </ServiceLayout>
+    </>
   );
 }

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { User, Briefcase, MessageCircle, ArrowRight, X } from "lucide-react";
 import ServiceLayout from "../../components/ServiceLayout";
 const class10Hero = "/bg-6.jpg";
-import class10Roadmap from "../../assets/service-images/10-grade.jpg";
+import class10Roadmap from "../../assets/service-images/roadmap10.png";
 
 // --- BRAND COLORS ----------------------------------------------------
 const COLORS = {
@@ -19,7 +19,7 @@ const COLORS = {
   border: "#E5E7EB", // ✅ FIX (was referenced but missing)
 };
 
-const ROADMAP_LINK = "/roadmap/class-10";
+
 
 const cardStyle = {
   backgroundColor: "#FFFFFF",
@@ -478,43 +478,44 @@ const RoadmapModal = ({ open, onClose }) => {
   };
 
   return (
-    <div
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4"
-      onClick={handleBackdropClick}
-    >
-      <div className="relative bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl">
-        {/* Header */}
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-gray-200 bg-slate-50">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-              Class 10 Roadmap
-            </p>
-            <p className="text-sm sm:text-base font-semibold text-slate-900">
-              Complete academic and career roadmap after Matric
-            </p>
-          </div>
-
-          <button
-            type="button"
-            onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-slate-200/70 transition-colors"
-            aria-label="Close roadmap modal"
-          >
-            <X size={18} className="text-slate-600" />
-          </button>
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4"
+    onClick={handleBackdropClick}
+  >
+    <div className="relative bg-white rounded-2xl max-w-4xl w-full shadow-2xl flex flex-col"
+      style={{ maxHeight: '90vh' }}>
+      
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-gray-200 bg-slate-50 rounded-t-2xl flex-shrink-0">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Class 10 Roadmap
+          </p>
+          <p className="text-sm sm:text-base font-semibold text-slate-900">
+            Complete academic and career roadmap after Matric
+          </p>
         </div>
-
-        {/* Image area */}
-        <div className="bg-black flex items-center justify-center max-h-[75vh]">
-          <img
-            src={class10Roadmap}
-            alt="Class 10 academic and career roadmap"
-            className="w-full h-full object-contain"
-          />
-        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="p-1.5 rounded-full hover:bg-slate-200/70 transition-colors"
+        >
+          <X size={18} className="text-slate-600" />
+        </button>
       </div>
+
+      {/* Image */}
+      <div className="overflow-y-auto flex-1 rounded-b-2xl">
+        <img
+          src={class10Roadmap}
+          alt="Class 10 academic and career roadmap"
+          className="w-full h-auto block"
+        />
+      </div>
+
     </div>
-  );
+  </div>
+);
 };
 
 // --------------------------------------------------------------------
@@ -525,24 +526,21 @@ export default function Class10Guidance() {
   const adviceRef = useRef(null);
 
   const handleSeekAdviceClick = () => {
-    if (adviceRef.current) {
-      adviceRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    adviceRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <ServiceLayout>
-      {/* ✅ FIX: pass onOpenRoadmap so button works */}
-      <HeroIntroSection onOpenRoadmap={() => setRoadmapOpen(true)} />
+    <>
+      <ServiceLayout>
+        <HeroIntroSection onOpenRoadmap={() => setRoadmapOpen(true)} />
+        <HowTaleemiGuideHelpsSection onOpenRoadmap={() => setRoadmapOpen(true)} />
+        <OptionsSection onSeekAdviceClick={handleSeekAdviceClick} />
+        <TaleemiAdviceFormSection sectionRef={adviceRef} />
+        <NextStepSection />
+      </ServiceLayout>
 
-      <HowTaleemiGuideHelpsSection onOpenRoadmap={() => setRoadmapOpen(true)} />
-      <OptionsSection onSeekAdviceClick={handleSeekAdviceClick} />
-      <TaleemiAdviceFormSection sectionRef={adviceRef} />
-      <NextStepSection />
+      {/* Outside ServiceLayout so fixed positioning works correctly */}
       <RoadmapModal open={roadmapOpen} onClose={() => setRoadmapOpen(false)} />
-    </ServiceLayout>
+    </>
   );
 }
