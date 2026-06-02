@@ -68,12 +68,7 @@ const HeroSection = ({ onOpenRoadmap }) => {
 
         <div className="flex flex-wrap justify-center gap-4">
       
-          <NavLink
-            to="/roadmap/class-12"
-            className="px-6 py-2 rounded-xl border border-[#11253e] text-[#11253e] font-semibold hover:bg-[#11253e] hover:text-white transition"
-          >
-            Explore Options
-          </NavLink>
+          
         </div>
       </div>
     </section>

@@ -525,7 +525,6 @@ export default function TaleemiAdvice() {
       <HeroSection />
       <WhatMakesUniqueSection />
       <TaleemiAdviceFormSection />
-      
       <NextStepSection />
     </ServiceLayout>
   );

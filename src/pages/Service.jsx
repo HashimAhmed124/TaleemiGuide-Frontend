@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import {
   BookOpen,
@@ -404,17 +404,26 @@ const ServiceCard = ({ service, onNavigate }) => {
     ? COLORS.secondary + "20"
     : COLORS.primary + "20";
 
+    // heavy loading fixes are applied while commenting the previous codes
+
   return (
     <div
       onClick={() => onNavigate(service.path)}
-      className="
-    relative overflow-hidden group cursor-pointer
-    bg-white p-6 rounded-3xl
-    transition-all duration-500
-    transform hover:-translate-y-2
-    shadow-xl hover:shadow-2xl
-    flex flex-col
-  "
+  // fix 1: changing the transition
+  //     className="
+  //   relative overflow-hidden group cursor-pointer
+  //   bg-white p-6 rounded-3xl
+  //   transition-all duration-500
+  //   transform hover:-translate-y-2
+  //   shadow-xl hover:shadow-2xl
+  //   flex flex-col
+  // "
+  className="
+  relative overflow-hidden group cursor-pointer
+  bg-white p-6 rounded-3xl
+  shadow-xl hover:shadow-2xl
+  flex flex-col
+"
       style={{
         minHeight: "270px",
         borderColor: accentColorLight,
@@ -424,8 +433,10 @@ const ServiceCard = ({ service, onNavigate }) => {
           : `0 10px 20px -8px rgba(0,0,0,0.08)`,
         "--tw-ring-color": accentColorLight,
       }}
+      
+      // Fix 2: Replace the expensive scale animation with a safer alternative
     >
-      <div
+      {/* <div
         className="
       absolute -top-3 -right-3
       w-10 h-10 rounded-full
@@ -436,18 +447,42 @@ const ServiceCard = ({ service, onNavigate }) => {
         style={{
           background: `linear-gradient(295deg, ${COLORS.secondary}, ${accentColorLight})`,
         }}
-      />
+      /> */}
+
+<div
+  className="
+    absolute inset-0 rounded-3xl
+    opacity-0 transition-all duration-500 ease-out
+    group-hover:opacity-100
+    z-0
+  "
+  style={{
+    background: `linear-gradient(295deg, ${COLORS.secondary}, ${accentColorLight})`,
+  }}
+/> 
+  
 
       {/* 🔹 Card Content */}
       <div className="relative z-10 flex flex-col h-full">
         <div className="mb-4">
-          <img
+          
+          {/* fix 3: apply lazy loading method */}
+          {/* <img
             src={service.img}
             className="relative w-full max-h-34 object-cover 
               transition-transform 
             duration-500 group-hover/image:scale-120 rounded-xl"
             alt=""
-          />
+          /> */}
+          <img
+  src={service.img}
+  loading="lazy"
+className="relative w-full max-h-34 object-cover rounded-xl"
+  alt=""
+/>
+
+
+
           <div
             className="relative group/image 
           overflow-hidden
@@ -534,7 +569,19 @@ const CoreServicesSection = ({
   searchTerm,
   setSearchTerm,
 }) => {
-  const filteredServices = serviceData.filter((service) => {
+  // fix 4
+  // const filteredServices = serviceData.filter((service) => {
+  //   const matchesFilter =
+  //     activeFilter === "all" || service.category === activeFilter;
+  //   const q = searchTerm.trim().toLowerCase();
+  //   const matchesSearch =
+  //     q === "" ||
+  //     service.title.toLowerCase().includes(q) ||
+  //     service.description.toLowerCase().includes(q);
+  //   return matchesFilter && matchesSearch;
+  // });
+  const filteredServices = useMemo(() =>
+  serviceData.filter((service) => {
     const matchesFilter =
       activeFilter === "all" || service.category === activeFilter;
     const q = searchTerm.trim().toLowerCase();
@@ -543,7 +590,9 @@ const CoreServicesSection = ({
       service.title.toLowerCase().includes(q) ||
       service.description.toLowerCase().includes(q);
     return matchesFilter && matchesSearch;
-  });
+  }),
+  [activeFilter, searchTerm]
+);
 
   return (
     <section

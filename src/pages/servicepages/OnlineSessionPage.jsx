@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
 import ServiceLayout from "../../components/ServiceLayout";
 import { ArrowRight } from "lucide-react";
@@ -368,50 +368,208 @@ const HowToBookSection = () => (
 //---------------------------------------------------------------------
 // 5) INVEST IN YOUR FUTURE -------------------------------------------
 //---------------------------------------------------------------------
-const InvestInYourFutureSection = () => (
-  <section className="py-10 border-b border-gray-200">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+const InvestInYourFutureSection = () => {
+  return (
+    <>
+      <section className="py-10 border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-1">
+            <h2
+              className="text-2xl sm:text-3xl font-extrabold "
+              style={{ color: COLORS.primaryDark }}
+            >
+              Invest in Your Future
+            </h2>
+            <div
+              className="w-77 h-1 rounded-full"
+              style={{ backgroundColor: COLORS.secondary }}
+            />
+          </div>
 
-      <div className="mb-10">
-        <h2
-          className="text-2xl sm:text-3xl font-extrabold "
-          style={{ color: COLORS.primaryDark }}
-        >
-          Invest in Your Future
-        </h2>
+          <h2
+            className="text-xl sm:text-2xl font-bold mb-3"
+            style={{ color: COLORS.primaryDark }}
+          >
+            Most Student Book after Using Assessmengt
+          </h2>
+
+          <p
+            className="text-sm sm:text-base leading-relaxed mb-6 max-w-3xl"
+            style={{ color: COLORS.textGray }}
+          >
+            A single conversation with the right expert can change your direction —
+            and your future.
+            <br />
+            Take the next step toward clarity, confidence, and achievement.
+          </p>
+
+          <button
+            type="button"
+            className="w-full sm:w-auto text-left sm:text-center rounded-3xl px-6 py-5 sm:px-8 sm:py-6 font-semibold text-sm sm:text-base transition-transform duration-200 hover:scale-[1.02]"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(37,99,235,0.08), rgba(249,115,22,0.12))",
+              color: COLORS.primaryDark,
+              boxShadow: "0 14px 35px rgba(15,23,42,0.18)",
+              border: `1px solid ${COLORS.borderSoft}`,
+            }}
+          >
+            Book your online session today and receive personalized guidance from
+            the experts at TaleemiGuide.
+          </button>
+        </div>
+      </section>
+
+      {/* FORM (MOVED + INTEGRATED BELOW SECTION) */}
+      <TaleemiAdviceForm selectedCategory="" />
+    </>
+  );
+};
+
+const TaleemiAdviceForm = ({ selectedCategory }) => {
+  const [category, setCategory] = useState(selectedCategory || "");
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
+
+  const openDatePicker = () => {
+    const el = document.getElementById("sessionDate");
+    if (el) el.showPicker?.() || el.focus();
+  };
+
+  return (
+    <section
+      id="form"
+      className="relative w-full py-16 px-6"
+      style={{
+        backgroundImage: "url(/image.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="absolute inset-0 bg-[#0B1C3C]/80" />
+
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
+
+        {/* LEFT SIDE */}
         <div
-          className="w-77 h-1 rounded-full"
-          style={{ backgroundColor: COLORS.secondary }}
-        /></div>
+          className="hidden md:flex items-end p-10 relative"
+          style={{
+            backgroundImage: "url('/image.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/60 to-transparent" />
 
-      <p
-        className="text-sm sm:text-base leading-relaxed mb-6 max-w-3xl"
-        style={{ color: COLORS.textGray }}
-      >
-        A single conversation with the right expert can change your direction —
-        and your future.
-        <br />
-        Take the next step toward clarity, confidence, and achievement.
-      </p>
+          <div className="relative z-10 text-white">
+            <span className="px-3 py-1 text-xs rounded-full bg-orange-500/20 border border-orange-500/30">
+              TaleemiGuide • Session Booking
+            </span>
 
-      <button
-        type="button"
-        className="w-full sm:w-auto text-left sm:text-center rounded-3xl px-6 py-5 sm:px-8 sm:py-6 font-semibold text-sm sm:text-base transition-transform duration-200 hover:scale-[1.02]"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(37,99,235,0.08), rgba(249,115,22,0.12))",
-          color: COLORS.primaryDark,
-          boxShadow: "0 14px 35px rgba(15,23,42,0.18)",
-          border: `1px solid ${COLORS.borderSoft}`,
-        }}
-      >
-        Book your online session today and receive personalized guidance from
-        the experts at TaleemiGuide.
-      </button>
-    </div>
-  </section>
-);
+            <h2 className="mt-4 text-3xl font-bold">
+              Book an{" "}
+              <span style={{ color: COLORS.secondary }}>Online Session</span>
+            </h2>
 
+            <p className="mt-3 text-sm text-slate-200">
+              Mark the Calender and Get the Confirmataion.
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE FORM */}
+        <div className="bg-white p-8 md:p-12">
+          <h3
+            className="text-3xl font-bold mb-6"
+            style={{ color: COLORS.primary }}
+          >
+            Book Your Online Session
+          </h3>
+
+          <form className="space-y-5">
+
+            {/* Inputs */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {["Name", "Email", "Phone"].map((item) => (
+                <input
+                  key={item}
+                  type={
+                    item === "Email"
+                      ? "email"
+                      : item === "Phone"
+                      ? "tel"
+                      : "text"
+                  }
+                  placeholder={item}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:outline-none"
+                />
+              ))}
+            </div>
+
+            {/* Category */}
+            <select
+              className="w-full px-4 py-3 rounded-lg border border-gray-300"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="">Select category</option>
+              <option value="class_10">Class 10</option>
+              <option value="class_12">Class 12</option>
+              <option value="university">University</option>
+              <option value="working_pro">Working Professional</option>
+            </select>
+
+            {/* Query */}
+            <textarea
+              rows="4"
+              placeholder="Describe your concern..."
+              className="w-full px-4 py-3 rounded-lg border border-gray-300"
+            />
+
+            {/* DATE PICKER (FIXED) */}
+            <div className="flex items-center gap-4">
+              <label
+                onClick={openDatePicker}
+                className="px-5 py-2 rounded-md cursor-pointer font-medium"
+                style={{ background: COLORS.secondary, color: "white" }}
+              >
+                Select Date
+              </label>
+
+              <span className="text-sm text-gray-500">
+                {selectedDate || "No date selected"}
+              </span>
+
+              <input
+                id="sessionDate"
+                type="date"
+                className="absolute opacity-0 pointer-events-none"
+                onChange={handleDateChange}
+              />
+            </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              className="w-full py-3 rounded-lg font-semibold text-white"
+              style={{ background: COLORS.primary }}
+            >
+              Submit
+            </button>
+
+            <p className="text-xs text-gray-400">
+              By submitting, you agree to be contacted by TaleemiGuide.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
 //---------------------------------------------------------------------
 // 6) NEXT STEP IN THE JOURNEY ----------------------------------------
 //---------------------------------------------------------------------

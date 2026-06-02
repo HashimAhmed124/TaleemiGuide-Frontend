@@ -123,7 +123,7 @@ export default function Navbar({
                   onClick={goAppointment}
                   className="hidden md:inline-flex px-5 py-2 rounded-lg text-sm font-semibold bg-[#F97316] text-white hover:bg-[#EA580C] shadow-lg transition duration-300"
                 >
-                  Book Session
+                  Get Guidance
                 </button>
               </>
             ) : (
@@ -262,7 +262,7 @@ export default function Navbar({
                     }}
                     className="w-full px-3 py-2 rounded-lg bg-[#F97316] text-white hover:bg-[#EA580C] shadow transition duration-300"
                   >
-                    Make An Appointment
+                    Get Guidance
                   </button>
                 </div>
               ) : (

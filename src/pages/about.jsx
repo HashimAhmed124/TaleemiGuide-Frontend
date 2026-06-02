@@ -147,170 +147,198 @@ export default function AboutPage() {
   return (
     <div className="w-full text-[#14223C]">
       {/* ================= MAIN SECTION ================= */}
-      <div className="relative w-full h-[60vh] md:h-[75vh]">
-        <img
-          src="/pic.png"
-          alt="about cover"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[#0B1C3C]/80"></div>
-        <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-20">
-          <h1 className="text-white text-4xl md:text-6xl font-bold">
-            About Us
-          </h1>
+<div className="relative w-full min-h-[65vh] md:min-h-[75vh]">
+  
+  {/* Background image — absolute so it fills without affecting layout flow */}
+  <img
+    src="/pic.png"
+    alt="about cover"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 bg-[#0B1C3C]/80" />
 
-          <span
-            className="bg-white h-1 rounded mt-0 inline-block transition-all duration-700"
-            style={{ width: loaded ? "280px" : "0px" }}
-          />
+  {/* Content — relative so the container grows with it */}
+  <div className="relative z-10 flex flex-col justify-center px-6 md:px-20 py-16 md:py-24">
+    
+    <h1 className="text-white text-4xl md:text-6xl font-bold">
+      About Us
+    </h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 1 }}
-            className="text-white text-lg md:text-xl mt-4 max-w-2xl"
-          >
-            <br />
-            <h2 className="text-xl sm:text-xl lg:text-2xl font-bold leading-tight mb-1">
-              Modern Academic & Career Guidance for Students in Pakistan
-            </h2>
-            Today’s education world is very different from before. Students face hundreds of degree options, thousands of institutions, and rapidly changing careers influenced by technology and AI. As a result, many students feel confused — and traditional guidance is no longer enough.
-            <br />
-            <br />
-            <h2 className="text-xl sm:text-xl lg:text-xl font-bold leading-tight mb-1">
-              This is exactly why TaleemiGuide exists.
-            </h2>
-            We offer a smart, modern platform that gives students clear,
-            personalized, and trusted academic guidance. Whether you’re in Class
-            10, choosing intermediate subjects, selecting a university degree,
-            or planning your career growth, TaleemiGuide helps you make the
-            right decisions with confidence.
-          </motion.p>
+    <span
+      className="bg-white h-1 rounded mt-2 inline-block transition-all duration-700"
+      style={{ width: loaded ? "280px" : "0px" }}
+    />
+
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.4, duration: 1 }}
+      className="text-white mt-6 max-w-2xl"
+    >
+      <h2 className="text-lg sm:text-xl lg:text-2xl font-bold leading-tight mb-3">
+        Modern Academic & Career Guidance for Students in Pakistan
+      </h2>
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        Today's education world is very different from before. Students face
+        hundreds of degree options, thousands of institutions, and rapidly
+        changing careers influenced by technology and AI. As a result, many
+        students feel confused — and traditional guidance is no longer enough.
+      </p>
+
+      <h2 className="text-base sm:text-lg font-bold leading-tight mt-6 mb-3">
+        This is exactly why TaleemiGuide exists.
+      </h2>
+      <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+        We offer a smart, modern platform that gives students clear,
+        personalized, and trusted academic guidance. Whether you're in Class
+        10, choosing intermediate subjects, selecting a university degree, or
+        planning your career growth, TaleemiGuide helps you make the right
+        decisions with confidence.
+      </p>
+    </motion.div>
+
+  </div>
+</div>
+      {/* ================= FEATURE SECTION ================= */}
+<section className="bg-[#FFDBBB] px-4 md:px-20 pb-16 pt-15 md:pt-25">
+  <div className="w-full bg-[#0B1C3C] text-white p-6 md:p-10 rounded-xl mx-auto shadow-lg
+    -mt-10 md:-mt-16
+    grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    {Feature.map((feature, idx) => (
+      <div key={idx} className="flex flex-col">
+        <div className="text-orange-600 text-5xl md:text-7xl mb-4">
+          {feature.icon}
         </div>
+        <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
+        <p className="text-sm leading-relaxed flex-grow">{feature.description}</p>
+        
+          <a href="#"
+          className="text-orange-600 mt-3 text-xs hover:underline flex items-center"
+        >
+          Learn More <FaArrowCircleRight className="inline ml-2" />
+        </a>
+      </div>
+    ))}
+  </div>
+</section>
+      {/* ================= OUR MISSION ================= */}
+<section className="py-20 bg-white overflow-hidden">
+  <div className="relative w-full flex flex-col md:flex-row items-center gap-10">
+    
+    {/* Text side */}
+    <div className="px-6 md:px-20 w-full md:w-1/2 flex-shrink-0">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-3xl md:text-4xl font-bold mb-6"
+      >
+        Our Mission
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="text-lg leading-relaxed"
+      >
+        TaleemiGuide is dedicated to helping students discover their true
+        potential. We connect students with expert counselors, provide
+        accurate career insights, and empower them to make informed
+        decisions about their academic journey.
+      </motion.p>
+    </div>
+
+    {/* Image side with diagonal clip — hidden on mobile, shown on md+ */}
+    <div className="hidden md:block relative w-1/2 h-80 flex-shrink-0">
+      <img
+        src="/pic.png"
+        alt="Mission"
+        className="w-full h-80 object-cover"
+        style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
+      />
+      <div
+        className="absolute inset-0 bg-[#0B1C3C]/80"
+        style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
+      />
+    </div>
+
+    {/* Mobile-only: simple full-width image without clip */}
+    <div className="block md:hidden w-full px-6">
+      <img
+        src="/pic.png"
+        alt="Mission"
+        className="w-full h-56 object-cover rounded-xl"
+      />
+    </div>
+
+  </div>
+</section>
+      {/* ================= OUR VISION ================= */}
+<section className="py-10 px-6 md:px-20 bg-white">
+  <div className="grid md:grid-cols-2 gap-10 items-center">
+    
+    {/* Image side */}
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={current.id}
+        src={current.img}
+        alt={current.title}
+        className="w-full h-64 sm:h-80 md:h-[460px] object-cover rounded-2xl shadow-lg"
+        initial={{ opacity: 0, x: 15 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -15 }}
+        transition={{ duration: 0.5 }}
+      />
+    </AnimatePresence>
+
+    {/* Text side */}
+    <div className="flex flex-col">
+      
+      {/* Tab buttons — wrap on small screens */}
+      <div className="flex flex-wrap gap-2">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-4 rounded-lg py-2 font-semibold border ${
+              activeTab === tab.id
+                ? "bg-[#0B1C3C] text-white border-[#0B1C3C]"
+                : "bg-white text-[#0B1C3C] border-gray-300"
+            }`}
+          >
+            {tab.title}
+          </button>
+        ))}
       </div>
 
-      {/* ================= FEATURE SECTION ================= */}
-      <section className="relative py-20 px-3 md:px-20 bg-[#FFDBBB]/100">
-        <div className="w-full  bg-[#0B1C3C] text-white p-10 rounded-lg mx-auto shadow-lg -mt-28 grid md:grid-cols-4 gap-8">
-          {Feature.map((feature, idx) => (
-            <div key={idx} className="flex flex-col ">
-              {feature.icon}
-              <h3 className="font-bold text-lg mb-2 text-start">
-                {feature.title}
-              </h3>
-              <p className="text-sm  max-w-md text-start overflow-hidden h-full justify-between">
-                {feature.description}
-              </p>
-              <a
-                href="#"
-                className="text-orange-600 mt-2 mb-1 text-xs hover:underline  flex items-end"
-              >
-                Learn More <FaArrowCircleRight className="inline ml-2 mb-0.5" />
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
+      <motion.h2
+        key={current.title}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-3xl md:text-4xl font-bold mt-6 mb-4 text-[#0B1C3C]"
+      >
+        {current.title}
+      </motion.h2>
 
-      {/* ================= OUR MISSION ================= */}
-      <section className="py-20 px-6 md:px-20 bg-white">
-        <div className="relative w-full flex items-center justify-between max-w-7xl mx-auto gap-10">
-          {/* Text side */}
+      <motion.div
+        key={current.desc}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="text-lg leading-relaxed text-[#14223C]"
+      >
+        <p>{current.desc}</p>
+        <img
+          src="/logo.jpg"
+          className="w-40 h-28 mt-6 opacity-30 select-none pointer-events-none"
+        />
+      </motion.div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold mb-6 flex-col"
-          >
-            Our Mission
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg max-w-3xl leading-relaxed"
-          >
-            TaleemiGuide is dedicated to helping students discover their true
-            potential. We connect students with expert counselors, provide
-            accurate career insights, and empower them to make informed
-            decisions about their academic journey.
-          </motion.p>
-
-          <img
-            src="/pic.png"
-            alt="Diagonal"
-            className="w-full h-120 object-cover -mt-20 -mb-20 -mr-30 b"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%)" }}
-          />
-          <div
-            className="absolute inset-0 bg-[#0B1C3C]/80 w-[56.3%] h-120 left-170 -mt-20 -mb-20 "
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%)" }}
-          ></div>
-        </div>
-      </section>
-      {/* ================= OUR VISION ================= */}
-      <section className="py-10 px-6 md:px-20 bg-white">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Image side */}
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={current.id}
-              src={current.img}
-              alt={current.title}
-              className="w-full h-115 object-cover rounded-2xl shadow-lg"
-              initial={{ opacity: 0, x: 15 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -15 }}
-              transition={{ duration: 0.5 }}
-            />
-          </AnimatePresence>
-
-          {/* Text side */}
-          <div className="flex flex-col">
-            <div className="flex gap-2 ">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 rounded-lg py-2 font-semibold border ${activeTab === tab.id
-                      ? "bg-[#0B1C3C] text-white border-[#0B1C3C]"
-                      : "bg-white text-[#0B1C3C] border-gray-300"
-                    }`}
-                >
-                  {tab.title}
-                </button>
-              ))}
-            </div>
-
-            <motion.h2
-              key={current.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-3xl md:text-4xl font-bold mt-6 mb-4 text-[#0B1C3C]"
-            >
-              {current.title}
-            </motion.h2>
-
-            <motion.p
-              key={current.desc}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-lg leading-relaxed text-[#14223C]"
-            >
-              {current.desc}
-              <img
-                src="/logo.jpg"
-                className=" w-90 h-60 ml-90 opacity-30 select-none pointer-events-none"
-              />
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
+    </div>
+  </div>
+</section>
       {/* ================= OUR VIDEO================= */}
 
       <section className="relative w-full h-[90vh] flex items-center justify-center text-center ">

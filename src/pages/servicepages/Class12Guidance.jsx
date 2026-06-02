@@ -74,12 +74,7 @@ Research shows that most students are aware of only 7–10% of actual career pos
             View Roadmap
           </button>
 
-          <NavLink
-            to="/roadmap/class-12"
-            className="px-6 py-2 rounded-xl border border-[#11253e] text-[#11253e] font-semibold hover:bg-[#11253e] hover:text-white transition"
-          >
-            Explore Options
-          </NavLink>
+          
         </div>
 
       </div>
